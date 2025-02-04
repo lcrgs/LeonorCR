@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="about-page">
+
+  <header class="top-menu">
+    <a href="index.html">
+      <h3>Home</h3>
+    </a>
+  </header>
+
+
+  <!-- Actual content of the About page -->
+  <div id="about-page-content">
+    <div id="profile-container">
+      <img src="profile.JPG" alt="Profile Picture" id="profile-img">
+      <div id="profile-content">
+        <section id="introduction">
+          <h2>Who am I?</h2>
+          <p>Hi! I'm Leonor CR, a Computer Science and Engineering student at NOVA University of Lisbon.</p>
+
+          <h2>What inspires me?</h2>
+          <p>I'm fascinated by how technology shapes our lives and how intuitive design can make complex tasks feel
+            effortless.</p>
+
+          <h2>My design philosophy</h2>
+          <p>I believe design should be human-centered, accessible, and purposeful. I aim to create interfaces that are
+            simple, empathetic, and enhance the user experience.</p>
+
+          <h2>Hobbies<br></h2>
+          <p>Padel, Surf, Running, Swimming, Photography, Video Production, Volunteering and Travel<br></h2>
+          <h2>Quote<br></h2>
+          <p>Attractive things work better - Don A. Norman <br></h2>
+            <button id="resume-button">View My Resume</button>
+        </section>
+      </div>
+    </div>
+    <!-- Add this div after your "resume" section to hold the map -->
+    <div id="globe-container">
+      <h2>Countries I've Traveled To</h2>
+      <div id="map"></div>
+    </div>
+
+    <div id="resume">
+      <p>View my resume below:</p>
+      <iframe src="Resume_LGS.pdf" width="100%" height="600px" style="border: none;"></iframe>
+    </div>
+  </div>
+
+
+
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script src="script.js"></script>
+  <footer class="site-footer">
+    <p>Website developed by Leonor Gaspar da Silva © 2025</p>
+  </footer>
+</body>
+
+</html>
