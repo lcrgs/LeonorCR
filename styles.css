@@ -1,0 +1,1182 @@
+/*
+   Center horizontally justify-content: center;
+  align-items: center;
+   Center vertically */
+
+:root {
+  --text: #FFDF64;
+  --background: #824C71;
+  --primary: #B79D94;
+  --secondary: #6B9AC4 ;
+  --accent: #D99682;
+}
+
+#pandagas-page {
+  --text: #235789;
+  --background: #BDD2D5;
+  color: var(--text);
+}
+
+#nusurf-page {
+  --text: #518E95;
+  --background: #BDD2D5;
+  color: var(--text);
+}
+
+#batotadoce-page {
+  --text: #AF46AF;
+  --background: #E5B097;
+  color: #923A92;;
+}
+
+#conswebsite-page {
+  --text: #575B5F;
+  --background: #EDE3E4;
+  color: var(--text);;
+}
+
+#indapp-page {
+  --text: #6C6C6C;
+  --background: #E6E6E6;
+  color: var(--text);;
+}
+
+#sonhovinho-page {
+  --text: #820001;
+  --background: #728349;
+  color: var(--text);;
+}
+
+#photography-page {
+  --text: #01111a;
+  --background: #427C9A;
+  color: var(--text);;
+}
+
+#uniproj-page {
+  --text: #e98668;
+  --primary: #e98668;
+  --background: #427C9A;
+  color: var(--text);;
+}
+
+#jogodagloria-page {
+  --text: #CDAA74;
+  --background: #703737;
+  color: var(--text);;
+}
+
+#gossip-page {
+  --text: #FF766F;
+  --background: #FFF3F2;
+  color: var(--text);;
+}
+
+#cinereviews-page {
+  --text: #FFF3F2;
+  --background: #FF766F;
+  color: var(--text);;
+}
+
+#artauctions-page {
+  --text: #B45122;
+  --background: #8AB6BD;
+  color: var(--text);;
+}
+
+#stackMachines-page {
+  --text: #235789;
+  --background: #CEE0F3;
+  color: var(--text);;
+}
+
+#database-page {
+  --text: #D7B162;
+  --background: #397A6A;
+  color: var(--text);;
+}
+
+#bspline-page {
+  --text: #B6DDFE;
+  --background: #BC9BAA;
+  color: var(--text);;
+}
+
+#firetruck-page {
+  --text: #E59A38;
+  --background: #DA4444;
+  color: var(--text);;
+}
+
+#phong-page {
+  --text: #3566A5;
+  --background: #B1B1B1;
+  color: var(--text);;
+}
+
+#worldedit-page {
+  --text: #515B3A;
+  --background: #BDAD89;
+  color: var(--text);;
+}
+
+#proxy-page {
+  --text: #93827F;
+  --background: #F3F9D2;
+  color: var(--text);;
+}
+
+#about-page {
+  --text: #8d4747;
+  --background: #f7f4f1;
+  color: var(--text);;
+}
+
+#contact-page {
+  --text: #8d4747;
+  --background: #f7f4f1;
+  color: var(--text);;
+}
+
+/* Font Faces */
+@font-face {
+  font-family: "Masicu";
+  src: url("Masicu-Black.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("Montserrat-VariableFont_wght.ttf") format("opentype");
+}
+
+/* Fonts */
+h1 {
+  font-size: 5em;
+  color: var(--text);
+  margin: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+h2 {
+  font-size: 2em;
+  color: var(--text);;
+  margin: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+h3 {
+  font-size: 1em;
+  color: var(--text);;
+  margin: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+h4 {
+  font-size: 10em;
+  color: var(--text);;
+  margin: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+
+/* GENERAL */
+
+/* Body */
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 2.44% 1.39%;
+  font-family: "Masicu";
+  padding-left: 4.17%;
+  background-color: var(--background);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  left: 2.5%;
+  top: 25%;
+  width: 0.07%;
+  height: 50vh;
+  background-color: var(--text);
+  z-index: 1;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, and Opera */
+}
+
+body strong {
+  color: var(--text);
+}
+
+/* Scroll Dot */
+.scroll-dot {
+  position: fixed;
+  left: 2.2%;
+  width: 0.69%;
+  height: 1.22%;
+  background-color: var(--text);
+  border-radius: 50%;
+  transition: top 0.1s ease;
+  z-index: 20;
+}
+/* end Scroll Dot */
+
+/* Top Menu */
+.top-menu {
+  letter-spacing: 0.3em;
+  font-family: "Montserrat";
+  position: fixed;
+  width: 3.47%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  bottom: 90%;
+  left: 1%;
+  color: var(--text);
+  transform: rotate(-90deg);
+}
+
+.top-menu a:hover h3 {
+  color: var(--accent);
+}
+/* end Top Menu */
+
+/* Description Container */
+.description-container {
+  letter-spacing: 0.3em;
+  font-family: "Montserrat";
+  position: fixed;
+  top: 6.11%;
+  left: 10%;
+  right: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: bottom;
+  margin-top: 2.44%;
+}
+
+/* Description */
+.description {
+  font-size: 1.2em;
+  color: var(--text);
+}
+/* end Description */
+/* end Description Container */
+
+/* Tag Filter Container */
+.tag-filter-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.625rem;
+  position: fixed;
+  margin-top: 1.25rem;
+  padding: 0.625rem;
+  top: 40%;
+  left: 8.5%;
+}
+
+/* Filter Button */
+.filter-btn {
+  background-color: var(--text);
+  color: var(--background);
+  border: none;
+  padding: 10px 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+
+.filter-btn:hover {
+  background-color: var(--accent);
+  color: var(--text);
+}
+
+.filter-btn.active {
+  background-color: var(--accent);
+  color: var(--text);
+  transform: scale(0.95);
+  transition: transform 0.1s ease-in-out;
+}
+
+.filter-btn.active:hover {
+  background-color: var(--accent);
+  color: var(--text);
+  transform: scale(0.95);
+  transition: transform 0.1s ease-in-out;
+}
+/* end Filter Button */
+/* end Tag Filter Container */
+
+
+/* Name Container */
+.name-container {
+  position: fixed;
+  left: 10%;
+  transition: transform 1s ease, opacity 1s ease;
+  padding-bottom: 10%;
+}
+/* end Name Container */
+
+/* Menu Container */
+.menu-container {
+  position: fixed;
+  justify-content: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding-bottom: 10%;
+  right: 5%;
+}
+
+.menu-container h3 {
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+/* Project Tags */
+.project-tags {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  margin-top: 0.61%;
+  letter-spacing: 0.3em;
+}
+/* end Project Tags */
+/* end Menu Container */
+
+/* Content Container */
+.content-container {
+  position: absolute;
+  top: 6.11%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: bottom;
+  align-items: left;
+  margin-top: 2.44%;
+  font-family: "Montserrat";
+  
+}
+
+.content-container h1 {
+  font-family: "Masicu";
+  color: var(--text);
+  padding-bottom: 24.45%;
+
+}
+
+.content-container h2 {
+  font-family: "Montserrat";
+  padding-top: 2.44%;
+  text-transform: uppercase;
+  font-size: small;
+}
+
+
+.content-container h3 {
+  font-family: "Montserrat";
+  font-weight: normal;
+}
+
+.content-container h4 {
+  font-size: 10em;
+  font-family: "Masicu";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.project-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding-bottom: 24.45%;
+  justify-items: center;
+  align-items: center;
+  gap: 0.69%;
+}
+
+.project-content {
+  display: grid;
+  gap: 4rem;
+  flex-direction:row;
+  grid-template-columns: repeat(2, 1fr);
+  padding-bottom: 4.89%;
+}
+
+/* Gallery */
+.gallery img {
+  margin-top: 3.67%;
+}
+
+.gallery-section {
+  margin-bottom: 4rem;
+  padding: 0 1rem;
+}
+
+.gallery-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.photo-grid {
+  display: flex;
+  flex-direction: column; /* uma foto por linha */
+  gap: 2rem; /* espaço entre as fotos */
+  margin-bottom: 3rem;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.photo-grid img:hover {
+  transform: scale(1.02);
+}
+/* End Gallery */
+
+/* Two Gallery */
+.two-gallery {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.two-gallery img {
+  width: 100%;
+  max-height: 30.56%;
+  /* Adjust based on your logo size */
+  height: auto;
+  border-radius: 3%;
+  object-fit: contain;
+}
+/* end Two Gallery */
+
+/* Video Wrapper */
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Portfolio Video */
+.portfolio-video {
+  width: 100%;
+  border-radius: 3%;
+}
+/* end Portfolio Video */
+/* end Video Wrapper */
+
+/* Big Logo */
+.big-logo {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 36.67%;
+  padding-bottom: 30%;
+}
+
+.big-logo h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+}
+
+/* Logo Image */
+.logo-img {
+  padding-top: 8%;
+  padding-left: 15%;
+  height: 140%;
+  width: 70%;
+  object-fit: cover;
+}
+/* end Logo Img */
+/* end Big Logo */
+
+/* Tshirt Gallery */
+.tshirt-gallery {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 0.69%;
+  padding-bottom: 10%;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.tshirt-gallery h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  grid-column: span 3;
+}
+
+/* Flip Container */
+.flip-container {
+  margin: 0 auto;
+  perspective: 1000px;
+  width: 80%;       
+  max-width: 100%;  
+  height: auto;    
+  max-height: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+/* Flip Card */
+.flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.flip-card img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  backface-visibility: hidden;
+}
+
+.flip-card .front {
+  transform: rotateY(0deg);
+}
+
+.flip-card .back {
+  transform: rotateY(180deg);
+}
+
+.flip-card:hover {
+  transform: rotateY(180deg);
+}
+/* end Flip Card */
+/* end Flip Cinatiner */
+/* end Tshirt Gallery */
+
+/* Carousel Container */
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: auto;
+}
+
+/* Carousel */
+.carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: scroll;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding: 0 6.11%;
+  height: auto;
+}
+
+.carousel img {
+  width: 90%;
+  max-width: auto;
+  height: auto;
+  border-radius: 3%;
+  object-fit: cover;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0px 15px rgba(0, 0, 0, 0.254);
+}
+
+.carousel::before,
+.carousel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3.47%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.carousel::before {
+  left: 0;
+  background: linear-gradient(to right, var(--background)8e, rgba(255, 255, 255, 0));
+}
+
+.carousel::after {
+  right: 0;
+  background: linear-gradient(to left, var(--background)8e, rgba(255, 255, 255, 0));
+}
+/* end Carousel */
+/* end Carousel Container */
+
+/* Photo Frame */
+.photo-frame {
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.photo-frame img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+
+/* Photo */
+.photo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+/* end Photo */
+/* end Photo Frame */
+.button{
+  display: flex;
+  justify-content: center;
+}
+
+.more-button{
+  border: none;
+  border-radius: 5px;
+  color: var(--background);
+  background-color: var(--text);
+  padding: 0.69% 1.22%;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.more-button:hover {
+  opacity: 80%;;
+}
+
+.project-more {
+  display: grid;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+  padding: 0 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-top: 20px;
+  background-color: var(--background);
+  gap: 4rem;
+  flex-direction:row;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.project-more.expanded {
+  max-height: 1000px; /* Adjust based on content height */
+  padding: 20px;
+  background-color: var(--background);
+}
+
+.view-button{
+  border: none;
+  border-radius: 5px;
+  color: var(--background);
+  background-color: var(--text);
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+/* end Content Container */
+/* end Body */
+
+
+
+
+/* SPECIFIC BODIES */
+
+/* Home */
+#home-page h1,
+#home-page h2,
+#home-page h3 {
+  color: var(--text);
+}
+
+#home-page h1:hover,
+#home-page h3:hover {
+  color: var(--accent);
+}
+
+#homeContainer a {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+#homeContainer a.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* About */
+#about-page {
+  margin: 6.94% 12.22%;
+  padding: 0;
+  height: 100%;
+}
+
+#about-page-content{
+  display: flex;
+  flex-direction: column;
+  padding-right: 6.94%;
+  font-family: "Montserrat";
+  gap: 9.78%;
+}
+
+#profile-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: flex-start;
+  gap: 9.78%;
+
+}
+
+#resume {
+  display: flex;
+  flex-direction: column;
+}
+
+#profile-img{
+  height: 600px;
+}
+
+#resume-button {
+  display: flex;
+  background-color: var(--text);
+  color: var(--background);
+  border-radius: 5px;
+  border: none;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+#map {
+  height: 50vh; /* Adjust this as needed */
+  width: 100%;
+  margin-top: 2.44%;
+}
+#globe-container {
+  text-align: center;
+}
+
+
+
+/* Work */
+#workContainer {
+  position: absolute;
+  right: 5%;
+  left: 50%;
+  top: 15%;
+  align-items: flex-start;
+  padding-bottom: 15%;
+  padding-top: 15%;
+  transition: transform 1.5s ease-out, opacity 1s ease-out;
+  color: var(--text);
+}
+
+#workContainer a {
+  text-transform: uppercase;
+  font-family: "Masicu";
+  letter-spacing: 5px;
+  color: var(--text);
+  padding-top: 6.11%;
+  opacity: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#workContainer h1 {
+  color: var(--text);
+}
+
+
+#workContainer a span {
+  display: inline-block;
+  transition: color 0.3s ease-in-out;
+}
+
+#workContainer a:hover span {
+  color: var(--accent);
+}
+
+
+
+/* Sonho Vinho */
+#sonhovinhoContainer .video-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Consulting Website */
+#consWebsiteContainer .video-wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+
+
+/* Panda Gas */
+#pandagas-gallery .two-gallery img {
+  max-height: 500px;
+  height: 300px;
+}
+
+/* Industrial Application */
+#indAppContainer {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: bottom;
+  align-items: left;
+  margin-top: 20px;
+  font-family: "Montserrat";
+}
+
+#indAppContainer h1 {
+  font-family: "Masicu";
+  color: var(--text);
+  padding-bottom: 24.45%;
+}
+
+#indAppContainer h2 {
+  font-family: "Montserrat";
+  padding-top: 2.44%;
+}
+
+#indAppContainer h3 {
+  font-family: "Montserrat";
+  font-weight: normal;
+}
+
+#indAppContainer h4 {
+  font-size: 10em;
+  font-family: "Masicu";
+}
+
+/* Photography */
+#photoContainer {
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: flex-start;
+  margin-top: 50px;
+}
+
+/* Contact */
+#contact-page {
+  margin: 100px;
+  padding: 0;
+  height: 100%;
+}
+
+#contact-page-content{
+  display: flex;
+  flex-direction: column;
+  padding-right: 100px;
+  font-family: "Montserrat";
+  gap: 80px;
+}
+
+
+
+
+/* EFFECTS */
+
+.enlarged {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Keyframes for slide-in effect */
+@keyframes slideIn {
+  0% {
+    transform: translate(-50%, -50%) translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+
+/* Footer Styles */
+.site-footer {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: "Montserrat";
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;  /* Keeps it at the bottom even if the content is short */
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  font-size: 14px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* iPad-specific styles (both portrait and landscape) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* Scale down font sizes */
+  h1 { font-size: 2em !important; }
+  h2 { font-size: 3em !important; }
+  h3 { font-size: 1em !important; }
+  h4 { font-size: 5em !important; }
+  .description { font-size: 0.8em !important; }
+  .project-tags { font-size: 0.8em !important; }
+  .filter-btn { font-size: 0.8em !important; padding: 2p
+    x 10px !important; }
+  .top-menu { width: 1.7% !important; bottom: 95% !important; left: 0.5% !important; }
+  
+  /* Reduce padding and margins globally */
+  body {
+    padding: 1.22% 0.7% !important;
+    padding-left: 2.1% !important;
+  }
+  .description-container {
+    top: 3% !important;
+    left: 5% !important;
+    right: 80% !important;
+    margin-top: 1.2% !important;
+  }
+  .tag-filter-container {
+    grid-template-columns: repeat(1, 1fr)!important; ; 
+    gap: 0.3rem !important;              /* Keep a little space between buttons */
+    padding: 0.3rem !important;
+    top: 40% !important;
+    left: 4% !important;
+  }
+  .name-container {
+    left: 5% !important;
+    padding-bottom: 10% !important;
+  }
+  .menu-container {
+    right: 2.5% !important;
+    padding-bottom: 10% !important;
+  }
+  .content-container {
+    top: 3% !important;
+    left: 50% !important;
+    margin-top: 1.2% !important;
+    font-size: 0.5em !important;
+  }
+  .project-info {
+    padding-bottom: 12% !important;
+    gap: 0.3% !important;
+  }
+  .project-content {
+    gap: 2rem !important;
+    padding-bottom: 2.4% !important;
+  }
+  
+  /* Resize images and containers */
+  .gallery img {
+    margin-top: 1.8% !important;
+  }
+  .two-gallery {
+    gap: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .two-gallery img {
+    max-height: 150px !important;
+  }
+  .big-logo {
+    height: 18% !important;
+    padding-bottom: 15% !important;
+  }
+  .logo-img {
+    padding-top: 4% !important;
+    padding-left: 7.5% !important;
+    height: 70% !important;
+    width: 35% !important;
+  }
+  .tshirt-gallery {
+    gap: 1rem !important;
+    padding: 0 0.35% !important;
+    grid-template-columns: repeat(3, 1fr);
+      padding-bottom: 30%;
+
+  }
+  .tshirt-gallery h2 {
+    margin-bottom: 1.5rem !important;
+    font-size: 1rem !important;
+  }
+  .flip-container {
+    width: 40% !important;
+  }
+  
+  /* Adjust buttons */
+  .more-button, .view-button {
+    padding: 5px !important;
+  }
+  
+  /* Adjust footer and others */
+  .site-footer {
+    font-size: 0.5em !important;
+  }
+}
+/* iPhone-specific styles (portrait and landscape) */
+@media only screen and (max-width: 767px) {
+  /* Scale down font sizes */
+  h1 { font-size: 1.1em !important; }
+  h2 { font-size: 2em !important; }
+  h3 { font-size: 0.9em !important; }
+  h4 { font-size: 3em !important; }
+  .description { font-size: 0.75em !important; }
+  .project-tags { font-size: 0.75em !important; }
+  .filter-btn {
+    font-size: 0.75em !important;
+    padding: 2px 8px !important;
+  }
+  .top-menu {
+    width: 3% !important;
+    bottom: 95% !important;
+    left: 1% !important;
+  }
+
+  /* Reduce padding and margins globally */
+  body {
+    padding: 1.22% 0.7% !important;
+    padding-left: 2.1% !important;
+  }
+  .description-container {
+    top: 3% !important;
+    left: 5% !important;
+    right: 80% !important;
+    margin-top: 1.2% !important;
+  }
+  .tag-filter-container {
+    grid-template-columns: repeat(1, 1fr)!important; ; 
+    gap: 0.3rem !important;              /* Keep a little space between buttons */
+    padding: 0.3rem !important;
+    top: 50% !important;
+    left: 4% !important;
+  }
+  .name-container {
+    left: 5% !important;
+    padding-bottom: 10% !important;
+  }
+  .menu-container {
+    right: 2.5% !important;
+    padding-bottom: 10% !important;
+  }
+  .content-container {
+    top: 3% !important;
+    left: 50% !important;
+    margin-top: 1.2% !important;
+    font-size: 0.5em !important;
+    width: auto !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 5% !important;
+  font-size: 0.45em !important;
+  box-sizing: border-box !important;
+  }
+  .project-info {
+    padding-bottom: 12% !important;
+    gap: 0.3% !important;
+  }
+  .project-content {
+    gap: 2rem !important;
+    padding-bottom: 2.4% !important;
+  }
+  
+  /* Resize images and containers */
+  .gallery img {
+    margin-top: 1.8% !important;
+  }
+  .two-gallery {
+    gap: 1rem !important;
+    margin-bottom: 1rem !important;
+    transform: scale(0.75);
+  transform-origin: top center;
+  }
+  .video-wrapper{
+        transform: scale(0.55);
+  transform-origin: top center;
+  }
+  .two-gallery img {
+    max-height: 150px !important;
+  }
+
+  .big-logo {
+    height: 18% !important;
+    padding-bottom: 15% !important;
+  }
+  .logo-img {
+    padding-top: 4% !important;
+    padding-left: 7.5% !important;
+    height: 70% !important;
+    width: 35% !important;
+  }
+  .tshirt-gallery {
+    gap: 1rem !important;
+    padding: 0 0.35% !important;
+    grid-template-columns: repeat(3, 1fr);
+      padding-bottom: 10%;
+
+  }
+  .tshirt-gallery h2 {
+    margin-bottom: 1.5rem !important;
+    font-size: 1rem !important;
+  }
+  .flip-container {
+    width: 40% !important;
+  }
+  
+  /* Adjust buttons */
+  .more-button, .view-button {
+    padding: 5px !important;
+  }
+  
+  /* Adjust footer and others */
+  .site-footer {
+    font-size: 0.5em !important;
+  }}

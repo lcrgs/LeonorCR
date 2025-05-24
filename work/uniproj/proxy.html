@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP Proxy and Cache Server - TPC4 – Redes de Computadores 2024/2025</title>
+  <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body id="proxy-page">
+  <header class="top-menu">
+    <a href="../../index.html">
+      <h3>Home</h3>
+    </a>
+  </header>
+
+  <div class="content-container" id="proxyContainer">
+    <h4>Proxy Server</h4>
+    <section>
+      <h1>Creating a Caching Proxy Server for Faster Web Performance.</h1>
+    </section>
+    <h3>Python | Networking | HTTP Protocol | Caching | Multithreading</h3>
+
+    <section>
+      <h2>My Role</h2>
+      <p>
+        As part of the <strong>Redes de Computadores</strong> course, I was tasked with developing an HTTP Proxy Server
+        with optional caching functionality. This project involved implementing a sequential and concurrent proxy
+        server, handling GET requests, and optionally adding caching to improve performance. I was responsible for the
+        <span class="underline">proxy server implementation</span>, <span class="underline">caching mechanism</span>,
+        and <span class="underline">testing</span>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Challenges & Strategy</h2>
+      <p>
+        The main challenge was understanding the HTTP protocol and implementing a proxy server that could intercept,
+        modify, and forward requests. Additionally, adding caching functionality required careful handling of disk I/O
+        and ensuring that cached responses were valid. The concurrent version of the proxy server introduced the
+        complexity of handling multiple client requests simultaneously.
+      </p>
+      <ul>
+        <li><strong>Solution:</strong> I implemented the proxy server in Python, using the <strong>socket</strong>
+          library to handle network communication.</li>
+        <li><strong>Solution:</strong> For the concurrent version, I used Python's <strong>threading</strong> module to
+          handle multiple client requests simultaneously.</li>
+        <li><strong>Solution:</strong> I implemented a simple caching mechanism that stores responses on disk and
+          retrieves them for subsequent requests.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Results & Impact</h2>
+      <ul>
+        <li><strong>Functional Proxy Server:</strong> The final product was a fully functional HTTP proxy server that
+          could handle GET requests and optionally cache responses.</li>
+        <li><strong>Improved Performance:</strong> The caching mechanism significantly reduced response times for
+          repeated requests.</li>
+        <li><strong>Learning Experience:</strong> This project significantly improved my understanding of networking,
+          the HTTP protocol, and concurrent programming.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Key Skills</h2>
+      <ul>
+        <li>Python Programming</li>
+        <li>Networking and HTTP Protocol</li>
+        <li>Concurrent Programming</li>
+        <li>Caching Mechanisms</li>
+        <li>Debugging and Testing</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tools & Technologies</h2>
+      <ul>
+        <li><strong>Python</strong> (Core Programming Language)</li>
+        <li><strong>Socket Library</strong> (Network Communication)</li>
+        <li><strong>Threading Module</strong> (Concurrency)</li>
+        <li><strong>Disk I/O</strong> (Caching)</li>
+        <li><strong>Command-Line Tools</strong> (Testing)</li>
+      </ul>
+    </section>
+
+  </div>
+</body>
+
+</html>
