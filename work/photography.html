@@ -65,7 +65,52 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
   <script src="../script.js"></script>
 
+  <script>
+    const easeAmount = 0.05; // smaller value = smoother and softer pull
 
+    const photoFrames = [...document.querySelectorAll('.photo-frame')];
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const viewportCenter = window.innerHeight / 2;
+          const scrollY = window.scrollY;
+
+          let closestPhoto = null;
+          let closestDistance = Infinity;
+
+          photoFrames.forEach(photo => {
+            const rect = photo.getBoundingClientRect();
+            const photoCenter = scrollY + rect.top + rect.height / 2;
+            const distance = Math.abs(photoCenter - (scrollY + viewportCenter));
+
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              closestPhoto = photo;
+            }
+          });
+
+          if (closestPhoto) {
+            const rect = closestPhoto.getBoundingClientRect();
+            const photoCenter = scrollY + rect.top + rect.height / 2;
+            const targetScroll = photoCenter - viewportCenter;
+
+            // Smoother easing for more control
+            const newScroll = scrollY + (targetScroll - scrollY) * easeAmount;
+
+            if (Math.abs(newScroll - scrollY) > 0.5) {
+              window.scrollTo(0, newScroll);
+            }
+          }
+
+          ticking = false;
+        });
+
+        ticking = true;
+      }
+    });
+  </script>
 </body>
 
 

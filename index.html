@@ -9,6 +9,12 @@
 </head>
 
 <body id="home-page">
+  <div id="intro-message">
+    <p id="typing-text"></p>
+  </div>
+  <div id="info-button" title="See message again">ⓘ</div>
+
+
   <header class="top-menu">
     <a href="https://www.linkedin.com/in/leonorgaspardasilva/">
       <h3>Linkedin</h3>
@@ -16,29 +22,111 @@
   </header>
 
   <div class="name-container">
-    <h2>Leonor CR</h2>
+    <a href="about.html" class="about-link">
+      <h2>Leonor CR</h2>
+    </a>
   </div>
+
 
   <div class="menu-container" id="homeContainer">
     <a href="work.html">
       <h1>WORK</h1>
     </a>
-    <a href="about.html">
+    <a href="about.html" class="about-link">
       <h1>ABOUT</h1>
     </a>
     <a href="contact.html">
       <h1>CONTACT</h1>
     </a>
   </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const message =
+        "This website was handcrafted by me with many late nights, countless lines of code, and lots of love.";
+      const textElement = document.getElementById("typing-text");
+      const introBox = document.getElementById("intro-message");
+      const infoBtn = document.getElementById("info-button");
+
+      let isAnimating = false;
+
+      function getRandomChar() {
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        return chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+
+      function attachHoverEffect(span, original) {
+        if (original === " " || original === "\u00A0") return;
+
+        span.addEventListener("mouseenter", () => {
+          let count = 0;
+          const interval = setInterval(() => {
+            span.textContent = getRandomChar();
+            count++;
+            if (count > 5) {
+              clearInterval(interval);
+              span.textContent = original;
+            }
+          }, 50);
+        });
+      }
+
+      function startTypingAnimation() {
+        if (isAnimating) return;
+        isAnimating = true;
+
+        let index = 0;
+        textElement.innerHTML = "";
+
+        introBox.style.animation = "none";
+        void introBox.offsetWidth;
+        introBox.style.animation = "fadeIn 1s ease forwards, floatAway 1s ease 25s forwards";
+
+        function typeCharacter() {
+          if (index < message.length) {
+            const span = document.createElement("span");
+            const char = message.charAt(index);
+            span.textContent = char === " " ? "\u00A0" : char;
+            span.classList.add("char");
+
+            attachHoverEffect(span, char);
+
+            textElement.appendChild(span);
+            index++;
+            setTimeout(typeCharacter, 40);
+          } else {
+            isAnimating = false;
+          }
+        }
+
+        setTimeout(typeCharacter, 200);
+      }
+
+      startTypingAnimation();
+
+      infoBtn.addEventListener("mouseenter", () => {
+        startTypingAnimation();
+      });
+    });
+  </script>
+
+
+
+
+  <script src="script.js"></script>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
-  <script src="script.js"></script>
   <script src="js/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
   <script src="js/vanta.trunk.min.js"></script>
 
-  <footer class="site-footer">
-    <p>Website developed by Leonor Gaspar da Silva © 2025</p>
-  </footer>
+
+
+  <audio id="hover-sound" src="hover-sound.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+
+
 </body>
 
 </html>

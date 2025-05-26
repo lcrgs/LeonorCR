@@ -162,5 +162,28 @@
 
   <script src="../script.js"></script>
 </body>
+<script>
+  document.querySelectorAll(".flip-container").forEach((container) => {
+    const card = container.querySelector(".flip-card");
+
+    let isHovered = false;
+
+    container.addEventListener("mouseenter", () => {
+      isHovered = true;
+      card.classList.add("flipped");
+    });
+
+    container.addEventListener("mouseleave", () => {
+      isHovered = false;
+
+      setTimeout(() => {
+        if (!isHovered) {
+          card.classList.remove("flipped");
+        }
+      }, 500);
+    });
+  });
+</script>
+
 
 </html>

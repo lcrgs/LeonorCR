@@ -20,28 +20,59 @@
   <!-- Actual content of the About page -->
   <div id="about-page-content">
     <div id="profile-container">
-      <img src="profile.JPG" alt="Profile Picture" id="profile-img">
-      <div id="profile-content">
-        <section id="introduction">
-          <h2>Who am I?</h2>
-          <p>Hi! I'm Leonor CR, a Computer Science and Engineering student at NOVA University of Lisbon.</p>
+      <img src="profile.png" alt="Profile Picture" id="profile-img">
 
-          <h2>What inspires me?</h2>
-          <p>I'm fascinated by how technology shapes our lives and how intuitive design can make complex tasks feel
-            effortless.</p>
-
-          <h2>My design philosophy</h2>
-          <p>I believe design should be human-centered, accessible, and purposeful. I aim to create interfaces that are
-            simple, empathetic, and enhance the user experience.</p>
-
-          <h2>Hobbies<br></h2>
-          <p>Padel, Surf, Running, Swimming, Photography, Video Production, Volunteering and Travel<br></h2>
-          <h2>Quote<br></h2>
-          <p>Attractive things work better - Don A. Norman <br></h2>
-            <button id="resume-button">View My Resume</button>
-        </section>
+      <div id="whoami-container">
+        <h2>Who am I?</h2>
+        <p>Hi! I'm <a href="https://www.linkedin.com/in/leonorgaspardasilva/" target="_blank"
+            rel="noopener noreferrer">Leonor CR</a>, a Computer Science and Engineering student at <a
+            href="https://www.fct.unl.pt/en" target="_blank" rel="noopener noreferrer">NOVA University of Lisbon</a>.
+        </p>
       </div>
     </div>
+
+    <div id="rest-of-profile">
+      <div class="profile-item">
+        <button class="dropdown-question">What inspires me? <span class="arrow">&#9662;</span></button>
+        <div class="dropdown-answer">
+          <p>I'm fascinated by how <span class="highlight-word">technology</span> shapes our lives and how <span
+              class="highlight-word">intuitive design</span> can make complex tasks feel
+            effortless.</p>
+        </div>
+      </div>
+
+      <div class="profile-item">
+        <button class="dropdown-question">My design philosophy <span class="arrow">&#9662;</span></button>
+        <div class="dropdown-answer">
+          <p>I believe design should be <span class="highlight-word">human-centered</span>, <span
+              class="highlight-word">accessible</span>, and <span class="highlight-word">purposeful</span>. I aim to
+            create interfaces that are <span class="highlight-word">simple</span>, <span
+              class="highlight-word">empathetic</span>, and <span class="highlight-word">enhance the user
+              experience</span>.</p>
+        </div>
+      </div>
+
+      <div class="profile-item">
+        <button class="dropdown-question">Hobbies <span class="arrow">&#9662;</span></button>
+        <div class="dropdown-answer">
+          <p>Padel, Surf, Running, Swimming, Photography, Video Production, Volunteering and Travel</p>
+        </div>
+      </div>
+
+      <div class="profile-item">
+        <button class="dropdown-question">Quote <span class="arrow">&#9662;</span></button>
+        <div class="dropdown-answer">
+          <p><a href="https://www.nngroup.com/books/emotional-design/" target="_blank"
+              rel="noopener noreferrer">Attractive things work better</a> - Don A. Norman</p>
+        </div>
+      </div>
+
+      <div class="profile-item full-width-button">
+        <button id="resume-button">View My Resume</button>
+      </div>
+    </div>
+
+
     <!-- Add this div after your "resume" section to hold the map -->
     <div id="globe-container">
       <h2>Countries I've Traveled To</h2>
@@ -57,6 +88,7 @@
 
 
 
+
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
@@ -64,9 +96,12 @@
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
   <script src="script.js"></script>
-  <footer class="site-footer">
-    <p>Website developed by Leonor Gaspar da Silva © 2025</p>
-  </footer>
+
+
+ 
+
 </body>
+<audio id="hover-sound" src="hover-sound.mp3" preload="auto"></audio>
+
 
 </html>

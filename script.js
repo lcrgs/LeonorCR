@@ -1,59 +1,159 @@
-// Get CSS variable values
-const rootStyles = getComputedStyle(document.documentElement);
-const textColor = rootStyles.getPropertyValue('--text').trim();
-const backgroundColor = rootStyles.getPropertyValue('--background').trim();
-const primaryColor = rootStyles.getPropertyValue('--primary').trim();
-const secondaryColor = rootStyles.getPropertyValue('--secondary').trim();
-const accentColor = rootStyles.getPropertyValue('--accent').trim();
+function toggleMore() {
+  const moreContent = document.querySelector(".project-more");
+  moreContent.classList.toggle("expanded");
+}
 
+function scrollToGallery(event) {
+  // Find the nearest gallery section relative to the clicked button
+  const gallerySection = event.target
+    .closest(".content-container")
+    .querySelector(".gallery");
+  if (gallerySection) {
+    gallerySection.scrollIntoView({ behavior: "smooth" });
+  }
+}
 
+function scrollToSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+}
 
+// ------------------------------
+// Global Setup
+// ------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  // --- CSS Variables ---
+  const rootStyles = getComputedStyle(document.documentElement);
+  const getVar = (name) => rootStyles.getPropertyValue(name).trim();
+  const textColor = getVar("--text");
+  const backgroundColor = getVar("--background");
+  const primaryColor = getVar("--primary");
+  const secondaryColor = getVar("--secondary");
+  const accentColor = getVar("--accent");
 
-document.addEventListener('DOMContentLoaded', function () {
-  const menuItems = document.querySelectorAll('.menu-container a');
-
-  // Trigger the animation by adding the 'show' class to each menu item
+  // ------------------------------
+  // 1. Menu Animation
+  // ------------------------------
+  const menuItems = document.querySelectorAll(".menu-container a");
   menuItems.forEach((item, index) => {
-    setTimeout(() => {
-      item.classList.add('show');
-    }, index * 200); // Stagger the animation for each item (e.g., 200ms apart)
+    setTimeout(() => item.classList.add("show"), index * 200);
   });
-});
 
+  // ------------------------------
+  // 2. Hover Sound
+  // ------------------------------
+  const hoverSound = document.getElementById("hover-sound");
 
-document.addEventListener("DOMContentLoaded", function () {
+  if (hoverSound) {
+    // Try unlocking audio playback right away (no click needed)
+    hoverSound
+      .play()
+      .then(() => {
+        hoverSound.pause();
+        hoverSound.currentTime = 0;
+      })
+      .catch(() => {
+        // No worries if blocked — sound will play on hover later
+      });
+
+    // Listen to mouse entering anywhere in the body (capturing phase)
+    document.body.addEventListener(
+      "mouseenter",
+      (event) => {
+        // Only play sound if the hovered element is an <a> tag
+        if (event.target.tagName === "A") {
+          hoverSound.currentTime = 0;
+          hoverSound
+            .play()
+            .catch((e) => console.warn("Hover sound blocked:", e));
+        }
+      },
+      true
+    );
+  }
+
+  // ------------------------------
+  // 3. VANTA Effects
+  // ------------------------------
+  const initVantaEffect = (type, selector, options) => {
+    const el = document.querySelector(selector);
+    if (el && VANTA[type]) return VANTA[type]({ el, ...options });
+  };
+
+  const vantaOptions = {
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.0,
+    minWidth: 200.0,
+    scale: 1.0,
+    scaleMobile: 1.0,
+    color: primaryColor,
+    backgroundColor: backgroundColor,
+  };
+
+  const vantaTrunk = initVantaEffect("TRUNK", "#home-page", {
+    ...vantaOptions,
+    spacing: 7.0,
+    chaos: 1,
+  });
+
+  if (vantaTrunk) {
+    document.addEventListener("mousemove", (event) => {
+      const centerX = window.innerWidth / 2;
+      const distance = Math.abs(event.clientX - centerX);
+      const chaos = (distance / centerX) * 7;
+      const spacing = 10 - chaos;
+      vantaTrunk.setOptions({ chaos, spacing });
+    });
+  }
+
+  initVantaEffect("TOPOLOGY", "#work-page", vantaOptions);
+  initVantaEffect("NET", "#uniproj-page", {
+    ...vantaOptions,
+    maxDistance: 40.0,
+    spacing: 19.0,
+    backgroundColor: 0x388c98,
+    color: secondaryColor,
+  });
+
+  // ------------------------------
+  // 4. Project Filter Buttons
+  // ------------------------------
   const buttons = document.querySelectorAll(".filter-btn");
-  const projects = document.querySelectorAll(".menu-container a");
   const allButton = document.querySelector('[data-tag="All"]');
-  let selectedTags = new Set(); // Store selected filters
-  allButton.classList.add("active");
+  const selectedTags = new Set();
 
-  buttons.forEach(button => {
+  allButton?.classList.add("active");
+
+  const filterProjects = () => {
+    document.querySelectorAll(".menu-container a").forEach((project) => {
+      const tags = project.dataset.tags.split(" ");
+      const show =
+        selectedTags.size === 0 || tags.some((tag) => selectedTags.has(tag));
+      project.style.display = show ? "block" : "none";
+    });
+  };
+
+  buttons.forEach((button) => {
     button.addEventListener("click", () => {
       const tag = button.dataset.tag;
 
-      // Toggle selection (add/remove from Set)
-      if (tag == "All") {
+      if (tag === "All") {
         selectedTags.clear();
-        buttons.forEach(btn => btn.classList.remove("active"));
+        buttons.forEach((btn) => btn.classList.remove("active"));
         allButton.classList.add("active");
       } else {
-        if (selectedTags.has(tag)) {
-          selectedTags.delete(tag);
-          button.classList.remove("active");
-        } else {
-          selectedTags.add(tag);
-          button.classList.add("active");
-        }
-      }
-      if (selectedTags.size === 0) {
-        allButton.classList.add("active");
-      } else {
-        if (selectedTags.size == 5) {
-          buttons.forEach(button2 => {
-            button2.classList.remove("active");
-          })
-          selectedTags.clear()
+        selectedTags.has(tag)
+          ? selectedTags.delete(tag)
+          : selectedTags.add(tag);
+        button.classList.toggle("active");
+
+        if (selectedTags.size === 0 || selectedTags.size === 5) {
+          selectedTags.clear();
+          buttons.forEach((btn) => btn.classList.remove("active"));
           allButton.classList.add("active");
         } else {
           allButton.classList.remove("active");
@@ -64,299 +164,164 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-
-
-  function filterProjects() {
-    projects.forEach(project => {
-      const projectTags = project.dataset.tags.split(" ");
-
-      // Show project if it matches ANY selected tag OR show all if none selected
-      if (selectedTags.size === 0 || projectTags.some(tag => selectedTags.has(tag))) {
-        project.style.display = "block";
-      } else {
-        project.style.display = "none";
-      }
-    });
-  }
-
-  // Initially show all projects
   filterProjects();
-});
 
+  // ------------------------------
+  // 5. Highlight Link on Scroll
+  // ------------------------------
+  const workLinks = document.querySelectorAll("#workContainer h1");
 
+  const checkMiddleOfScreen = () => {
+    const middle = window.innerHeight / 2;
+    const threshold = 100;
 
-
-// Select all project links
-const projectLinks = document.querySelectorAll('.menu-container a');
-document.addEventListener('DOMContentLoaded', function () {
-  const workContainer = document.getElementById('workContainer');
-  const links = workContainer.querySelectorAll('h1');
-
-  function checkMiddleOfScreen() {
-    const middleOfScreen = window.innerHeight / 2; // Middle of the viewport
-    const threshold = 100; // 20px threshold
-
-    links.forEach(link => {
-      const rect = link.getBoundingClientRect();
-      const linkMiddle = rect.top + rect.height / 2; // Middle of the link
-
-      // Check if the link's middle is within the threshold of the screen's middle
-      if (Math.abs(linkMiddle - middleOfScreen) < threshold) {
-        link.classList.add('enlarged');
-        links.forEach(link2 => {
-          if (link != link2)
-            link2.classList.remove('enlarged');
-        })
-      } else {
-        link.classList.remove('enlarged');
-      }
+    workLinks.forEach((link) => {
+      const { top, height } = link.getBoundingClientRect();
+      const center = top + height / 2;
+      link.classList.toggle("enlarged", Math.abs(center - middle) < threshold);
     });
-  }
+  };
 
-  // Attach the scroll event listener to the window
-  window.addEventListener('scroll', checkMiddleOfScreen);
-
-  // Initial check in case some links are already in the middle
+  window.addEventListener("scroll", checkMiddleOfScreen);
   checkMiddleOfScreen();
-});
 
+  // ------------------------------
+  // 6. Carousel Functionality
+  // ------------------------------
+  const carousel = document.querySelector(".carousel");
+  if (carousel) {
+    const dots = document.querySelectorAll(".carousel-dots span");
+    const images = carousel.querySelectorAll("img");
 
+    const updateActiveDot = () => {
+      const index = Math.floor(carousel.scrollLeft / carousel.offsetWidth);
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+    };
 
-// 4. VANTA.TRUNK effect (Home)
-document.addEventListener("DOMContentLoaded", () => {
-  let vantaEffect1 = VANTA.TRUNK({
-    el: "#home-page",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    scale: 1.00,
-    scaleMobile: 1.00,
-    color: primaryColor,
-    backgroundColor: backgroundColor,
-    spacing: 7.00,
-    chaos: 1
-  });
+    carousel.addEventListener("scroll", updateActiveDot);
+    dots.forEach((dot, i) =>
+      dot.addEventListener("click", () => {
+        carousel.scrollTo({
+          left: i * images[0].offsetWidth,
+          behavior: "smooth",
+        });
+      })
+    );
 
-  // Adjust chaos and spacing based on mouse movement
-  document.addEventListener("mousemove", (event) => {
-    let centerX = window.innerWidth / 2;
-    let distanceFromCenter = Math.abs(event.clientX - centerX);
-    let maxDistance = centerX; // Max distance to edges
-    let chaosLevel = (distanceFromCenter / maxDistance) * 7; // Scale chaos between 0-7
-    let spacingLevel = 10 - (distanceFromCenter / maxDistance) * 7;
-
-    vantaEffect1.setOptions({
-      chaos: chaosLevel,
-      spacing: spacingLevel
-    });
-  });
-});
-
-// 5. VANTA.TOPOLOGY effect (Work Page)
-document.addEventListener("DOMContentLoaded", () => {
-  let vantaEffect2 = VANTA.TOPOLOGY({
-    el: "#work-page",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    scale: 1.0,
-    scaleMobile: 1.00,
-    color: primaryColor,
-    backgroundColor: backgroundColor,
-  });
-
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  let vantaEffect3 = VANTA.NET({
-    el: "#uniproj-page",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    scale: 1.00,
-    scaleMobile: 1.00,
-    color: primaryColor,
-    backgroundColor: backgroundColor,
-    maxDistance: 40.00,
-    spacing: 19.00
-  })
-
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const carousel = document.querySelector('.carousel');
-  const dots = document.querySelectorAll('.carousel-dots span');
-  const images = carousel.querySelectorAll('img');
-  
-  // Function to update the active dot based on scroll position
-  function updateActiveDot() {
-    const scrollLeft = carousel.scrollLeft;
-    const carouselWidth = carousel.offsetWidth;
-
-    // Calculate the current index based on scroll position
-    const index = Math.floor(scrollLeft / carouselWidth);
-
-    // Remove 'active' class from all dots
-    dots.forEach(dot => dot.classList.remove('active'));
-
-    // Add 'active' class to the correct dot
-    if (dots[index]) {
-      dots[index].classList.add('active');
-    }
+    updateActiveDot();
   }
 
-  // Listen for the scroll event
-  carousel.addEventListener('scroll', updateActiveDot);
-
-  // Initialize the active dot on page load
-  updateActiveDot();
-
-  // Add click functionality to dots to scroll the carousel
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      const imageWidth = images[0].offsetWidth;
-      carousel.scrollTo({
-        left: index * imageWidth,
-        behavior: 'smooth'
-      });
-    });
-  });
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const colorThief = new ColorThief();
+  // ------------------------------
+  // 7. Dynamic Background (Photography)
+  // ------------------------------
   const body = document.getElementById("photography-page");
-  const images = document.querySelectorAll(".photo");
 
-  const observer = new IntersectionObserver(
+  const photoObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
+        const img = entry.target;
+        if (entry.isIntersecting && img.complete) {
+          const colorThief = new ColorThief();
+          const [r, g, b] = colorThief.getColor(img);
 
-          // Make sure the image is loaded before getting the color
-          if (img.complete) {
-            updateBackground(img);
-          } else {
-            img.onload = () => updateBackground(img);
-          }
+          // Calculate complementary color
+          const compR = 255 - r;
+          const compG = 255 - g;
+          const compB = 255 - b;
+
+          // Apply complementary color as background
+          body.style.background = `rgba(${compR}, ${compG}, ${compB}, 0.6)`;
+          body.style.transition = "background 0.5s ease-in-out";
         }
       });
     },
-    { threshold: 0.6 } // 60% of the image must be visible
+    { threshold: 0.6 }
   );
 
-  images.forEach((img) => observer.observe(img));
+  document.querySelectorAll(".photo").forEach((img) => {
+    if (img.complete) photoObserver.observe(img);
+    else img.onload = () => photoObserver.observe(img);
+  });
 
-  function updateBackground(img) {
-    if (!img) return;
-    
-    const color = colorThief.getColor(img); // Extract dominant color
-    const bgColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+  // ------------------------------
+  // 8. Timeline Event Interactions
+  // ------------------------------
+  document.querySelectorAll(".timeline-content").forEach((item) => {
+    const link = item.getAttribute("data-link");
+    const type = item.getAttribute("data-type");
 
-  
-    body.style.transition = "background 0.5s ease-in-out";
-    body.style.background = bgColor;
+    item.addEventListener("click", () => {
+      if (link) window.open(link, "_blank");
+    });
 
-    console.log(txtColor);
-  }
-});
+    item.addEventListener("mouseenter", () => {
+      document.querySelector(`.${type}-photo`).style.display = "block";
+    });
 
+    item.addEventListener("mouseleave", () => {
+      document.querySelector(`.${type}-photo`).style.display = "none";
+    });
+  });
 
-function toggleMore() {
-  const moreContent = document.querySelector('.project-more');
-  moreContent.classList.toggle('expanded');
-}
+  // ------------------------------
+  // 9. Scroll to Section Buttons
+  // ------------------------------
+  document.querySelectorAll(".view-button").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const gallery = e.target
+        .closest(".content-container")
+        ?.querySelector(".gallery");
+      gallery?.scrollIntoView({ behavior: "smooth" });
+    });
+  });
 
-function scrollToGallery(event) {
-  // Find the nearest gallery section relative to the clicked button
-  const gallerySection = event.target.closest('.content-container').querySelector('.gallery');
-  if (gallerySection) {
-    gallerySection.scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
-// Add event listeners to all buttons with the class 'view-button'
-document.querySelectorAll('.view-button').forEach(button => {
-  button.addEventListener('click', scrollToGallery);
-});
-
-document.querySelectorAll('.timeline-content').forEach(item => {
-  item.addEventListener('click', () => {
-    const link = item.getAttribute('data-link');
-    if (link) {
-      window.open(link, '_blank'); // Opens the link in a new tab
-    }
+  document.getElementById("resume-button")?.addEventListener("click", () => {
+    document.getElementById("resume")?.scrollIntoView({ behavior: "smooth" });
   });
 });
 
+// ------------------------------
+// 10. Map Initialization (Leaflet)
+// ------------------------------
+const map = L.map("map").setView([51.505, -0.09], 2);
 
-document.querySelectorAll('.timeline-content').forEach(item => {
-  item.addEventListener('mouseenter', () => {
-    const type = item.getAttribute('data-type');
-    document.querySelector(`.${type}-photo`).style.display = 'block';
-  });
-  item.addEventListener('mouseleave', () => {
-    const type = item.getAttribute('data-type');
-    document.querySelector(`.${type}-photo`).style.display = 'none';
-  });
-});
-
-
-function scrollToSection(sectionId) {
-  const section = document.getElementById(sectionId);
-  if (section) {
-    section.scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
-document.getElementById("resume-button").addEventListener("click", function () {
-  document.getElementById("resume").scrollIntoView({ behavior: "smooth" });
-});
-
-// Initialize the map
-const map = L.map('map').setView([51.505, -0.09], 2);  // Start with a global view
-
-const customIcon = L.icon({
-  iconUrl: 'icon.png',  // Use your custom icon image
-  iconSize: [32, 32],  // Size of the icon
-  iconAnchor: [16, 32],  // Anchor point of the icon
-  popupAnchor: [0, -32]  // Popup position relative to the icon
-});
-// Add OpenStreetMap tile layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: "&copy; OpenStreetMap contributors",
 }).addTo(map);
 
-// Function to add a country marker
-function addCountryMarker(lat, lon, countryName) {
+const customIcon = L.icon({
+  iconUrl: "icon.png",
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+  popupAnchor: [0, -32],
+});
+
+function addCountryMarker(lat, lon, name) {
   L.marker([lat, lon], { icon: customIcon })
     .addTo(map)
-    .bindPopup(`<b>${countryName}</b>`)
-    .openPopup();
+    .bindPopup(`<b>${name}</b>`);
 }
 
-// Add your visited countries (example latitudes and longitudes)
-addCountryMarker(42.5078, 1.5211, "Andorra");  // Andorra la Vella, Andorra
-addCountryMarker(50.8503, 4.3517, "Belgium");  // Brussels, Belgium
-addCountryMarker(15.1200, -23.6050, "Cape Verde");  // Praia, Cape Verde
-addCountryMarker(51.5074, -0.1278, "England");  // London, England
-addCountryMarker(48.8566, 2.3522, "France");  // Paris, France
-addCountryMarker(51.1657, 10.4515, "Germany");  // Berlin, Germany
-addCountryMarker(41.9028, 12.4964, "Italy");  // Rome, Italy
-addCountryMarker(31.9466, -7.5095, "Morocco");  // Marrakesh, Morocco
-addCountryMarker(38.7169, -9.1395, "Portugal");  // Lisbon, Portugal
-addCountryMarker(56.4907, -4.2026, "Scotland");  // Edinburgh, Scotland
-addCountryMarker(-33.9249, 18.4241, "South Africa");  // Cape Town, South Africa
-addCountryMarker(40.4637, -3.7492, "Spain");  // Madrid, Spain
-addCountryMarker(40.7128, -74.0060, "United States");  // New York, USA
+[
+  [42.5078, 1.5211, "Andorra"],
+  [50.8503, 4.3517, "Belgium"],
+  [15.12, -23.605, "Cape Verde"],
+  [51.5074, -0.1278, "England"],
+  [48.8566, 2.3522, "France"],
+  [51.1657, 10.4515, "Germany"],
+  [41.9028, 12.4964, "Italy"],
+  [31.9466, -7.5095, "Morocco"],
+  [38.7169, -9.1395, "Portugal"],
+  [56.4907, -4.2026, "Scotland"],
+  [-33.9249, 18.4241, "South Africa"],
+  [40.4637, -3.7492, "Spain"],
+  [40.7128, -74.006, "United States"],
+].forEach(([lat, lon, name]) => addCountryMarker(lat, lon, name));
 
-
+document.querySelectorAll(".dropdown-question").forEach((button) => {
+  button.addEventListener("click", () => {
+    const answer = button.nextElementSibling;
+    answer.classList.toggle("open");
+    button.classList.toggle("open"); // this is needed for the arrow to rotate
+  });
+});
