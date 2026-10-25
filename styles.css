@@ -1408,8 +1408,17 @@ body#work-page[data-section="other-work"] {
   }
 
   #workContainer .work-featured h1 {
-    white-space: normal;
     font-size: 2.2rem !important;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  #workContainer .work-featured h1 {
+    white-space: normal;
+  }
+
+  #workContainer h1.enlarged {
+    transform: none;
   }
 
   body#work-page {
@@ -2189,3 +2198,64 @@ body#work-page[data-section="other-work"] {
   .site-footer {
     font-size: 0.5em !important;
   }}
+
+
+/* Responsive fixes */
+.two-gallery img {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.video-frame {
+  max-width: 100%;
+}
+
+.video-frame iframe {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+@media only screen and (max-width: 767px) {
+  #intro-message {
+    white-space: normal;
+    left: 50%;
+    width: 80vw;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}
+
+.work-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.work-columns {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+
+@media only screen and (max-width: 767px) {
+  .work-grid,
+  .work-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Keep tier sizes on tablets (the generic tablet rules enlarge every h1) */
+#workContainer .work-more h1 {
+  font-size: 1.4em !important;
+}
+
+#workContainer .work-other h1 {
+  font-size: 0.95em !important;
+}
+
+@media only screen and (max-width: 767px) {
+  #intro-message {
+    white-space: nowrap;
+    width: auto;
+    font-size: 0.95em;
+    padding: 14px 18px;
+  }
+}
