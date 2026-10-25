@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Peacekeeper</title>
+  <link rel="icon" type="image/png" href="../icon.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body id="peacekeeper-page">
+  <header class="top-menu">
+    <a href="../index.html">
+      <h3>Home</h3>
+    </a>
+  </header>
+
+  <div class="content-container">
+    <h4>THE PEACE<wbr>KEEPER</h4>
+    <section>
+      <h1>When fear replaces curiosity.<br>An AI mediator that guides conflict toward empathy.</h1>
+    </section>
+    <div class="project-info">
+      <h3>Affective Computing</h3>
+      <h3>Interaction Design</h3>
+      <h3>Evaluation Design</h3>
+      <div class="button">
+        <button class="view-button">View</button>
+      </div>
+    </div>
+    <div>
+      <h3>AI | Multimodal Emotion Detection | Circumplex Model of Affect</h3>
+    </div>
+
+    <section class="project-content">
+      <div>
+        <h2>Brief</h2>
+        <p>
+          For the Advanced Topics in Human-Computer Interaction module of my MSc at Glasgow Caledonian University, I
+          designed The Peacekeeper: an <span class="underline">AI mediator</span> that de-escalates polarised
+          conversations. By detecting emotions and triggering interventions, it guides two people from defensiveness
+          toward empathy.
+        </p>
+      </div>
+      <div>
+        <h2>Roles</h2>
+        <p>
+          - Interaction Designer & Researcher (Solo Project)<br>
+          - Created personas, a scenario and storyboards.<br>
+          - Designed the device, the conversation sequence and the affective feedback loop.<br>
+          - Planned a lab study to evaluate the system.
+        </p>
+      </div>
+    </section>
+
+    <div class="button">
+      <button class="more-button" onclick="toggleMore()">More</button>
+    </div>
+
+    <div class="project-more">
+      <section>
+        <h2>The Problem</h2>
+        <p>
+          Two people cannot communicate because fear and anger have replaced curiosity and empathy. David, a traditional
+          father, and Julie, his transgender daughter, haven't truly talked in three years, and Christmas dinner ends in
+          shouting.
+        </p>
+        <p>
+          <strong>- Lack of emotional safety:</strong> Each side feels attacked, so nobody listens.<br>
+          <strong>- Lack of structure:</strong> Without guidance, the conversation spirals into blame.
+        </p>
+      </section>
+
+      <section>
+        <h2>The Solution</h2>
+        <p>
+          <strong>- The device:</strong> A neutral cylinder between the two people, with cameras and microphones that
+          capture voice, facial expressions, posture and turn-taking.<br>
+          <strong>- Emotion detection:</strong> Arousal and valence are mapped onto Russell's Circumplex Model to
+          recognise six emotions: fear, anger, frustration, contempt, disgust and shame.<br>
+          <strong>- Structured sequence:</strong> Onboarding, Provocation, Storytelling, Reverse (speaking for the
+          other person) and Reflect.<br>
+          <strong>- Interventions:</strong> Each emotion triggers a matching response, such as pausing, redirecting or a
+          reset with silence, in a continuous Sense, Analyse, Map, Intervene feedback loop.
+        </p>
+      </section>
+
+      <section>
+        <h2>Evaluation Plan</h2>
+        <p>
+          <strong>- Research question:</strong> Does The Peacekeeper de-escalate polarised conversations and guide
+          participants toward empathy?<br>
+          <strong>- Study:</strong> A lab study with 30 adults in 15 pairs holding opposing views, with 40-50 minute
+          sessions.<br>
+          <strong>- Measures:</strong> Detection accuracy against expert analysis (F1-score), arousal before and after
+          each intervention, and self-reported empathy through SAM and PANAS questionnaires.<br>
+          <strong>- Ethics:</strong> Informed consent, anonymised data, the right to withdraw and mental health resources
+          at debrief.
+        </p>
+      </section>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+      <h2>Prototype</h2>
+      <div class="carousel-container">
+        <div class="carousel">
+          <img src="../peacekeeper/01-cover.jpg" alt="The Peacekeeper Device" loading="lazy">
+          <img src="../peacekeeper/03-personas.jpg" alt="User Personas: David and Julie" loading="lazy">
+          <img src="../peacekeeper/04-storyboards.jpg" alt="Scenario and Storyboards" loading="lazy">
+          <img src="../peacekeeper/05-problem-solution.jpg" alt="From Problem to Solution" loading="lazy">
+          <img src="../peacekeeper/06-prototype-detection.jpg" alt="The Prototype and Multimodal Detection" loading="lazy">
+          <img src="../peacekeeper/07-structured-sequence.jpg" alt="Structured Sequence" loading="lazy">
+          <img src="../peacekeeper/08-interventions.jpg" alt="Interventions" loading="lazy">
+          <img src="../peacekeeper/09-interaction-walkthrough.jpg" alt="Interaction Walkthrough" loading="lazy">
+          <img src="../peacekeeper/10-walkthrough-stages.jpg" alt="Walkthrough Stages" loading="lazy">
+          <img src="../peacekeeper/11-feedback-loop.jpg" alt="Affective Feedback Loop" loading="lazy">
+          <img src="../peacekeeper/12-scenario-onboarding.jpg" alt="Scenario: Onboarding Phase" loading="lazy">
+          <img src="../peacekeeper/13-scenario-provocation.jpg" alt="Scenario: Provocation Phase" loading="lazy">
+          <img src="../peacekeeper/14-scenario-reverse.jpg" alt="Scenario: Reverse Phase" loading="lazy">
+          <img src="../peacekeeper/15-scenario-reflect.jpg" alt="Scenario: Reflect Phase" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <h2>Evaluation Plan</h2>
+      <div class="carousel-container">
+        <div class="carousel">
+          <img src="../peacekeeper/16-research-questions.jpg" alt="Research Questions, Metrics and Methods" loading="lazy">
+          <img src="../peacekeeper/17-study-settings.jpg" alt="Study Settings and Protocol" loading="lazy">
+          <img src="../peacekeeper/18-procedures-data.jpg" alt="Procedures and Data Collection" loading="lazy">
+          <img src="../peacekeeper/19-data-analysis.jpg" alt="Data Analysis" loading="lazy">
+          <img src="../peacekeeper/20-expected-results.jpg" alt="Elicitation and Expected Results" loading="lazy">
+          <img src="../peacekeeper/21-ethics.jpg" alt="Ethical Constraints" loading="lazy">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

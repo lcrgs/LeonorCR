@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with Leonor Gaspar da Silva, UX and interaction designer based in Lisbon.">
   <title>Contact Me - Leonor Gaspar da Silva</title>
+  <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -14,23 +16,102 @@
       <h3>Home</h3>
     </a>
   </header>
-  <div id="contact-page-content">
-    <h2>Contact Me</h2>
-    <p>I’d love to connect! Feel free to reach out for collaborations or just to chat about UX/UI,
-      front-end development, or computer science.</p>
+  <main id="contact-page-content">
+    <h1 class="ct-title">Let's talk.</h1>
+    <p class="ct-intro">
+      Whether it's a role, a project or just a chat about UX, research or design, I'd love to hear from you.
+    </p>
 
-    <div class="contact-info">
-      <p><strong>Email:</strong>
-        <a href="mailto:leonor.gaspar.silva@gmail.com" class="email-link underline">leonor.gaspar.silva@gmail.com</a>
-      </p>
-      <p><strong>Location:</strong> Lisboa, Portugal</p>
+    <div class="ct-email">
+      <p class="ct-label">Email</p>
+      <a href="mailto:leonor.gaspar.silva@gmail.com" class="ct-email-link">leonor.gaspar.silva@gmail.com</a>
+      <button type="button" class="ct-copy" data-copy="leonor.gaspar.silva@gmail.com">Copy</button>
     </div>
 
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/leonorgaspardasilva/" target="_blank" class="underline">LinkedIn</a>
+    <form class="ct-form" id="contact-form">
+      <p class="ct-label">Send me a message</p>
+      <div class="ct-form-row">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+      </div>
+      <label>
+        <span>Message</span>
+        <textarea name="message" rows="6" required></textarea>
+      </label>
+      <!-- Spam trap: real visitors never see or fill this field -->
+      <input type="text" name="_honey" class="ct-honey" tabindex="-1" autocomplete="off">
+      <div class="ct-form-actions">
+        <button type="submit" class="ct-send">Send message</button>
+        <p class="ct-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <div class="ct-cards">
+      <a class="ct-card" href="https://www.linkedin.com/in/leonorgaspardasilva/" target="_blank" rel="noopener noreferrer">
+        <p class="ct-label">LinkedIn</p>
+        <p class="ct-card-value">Connect with me &rarr;</p>
+      </a>
+      <a class="ct-card" href="Resume_LGS.pdf" target="_blank" rel="noopener">
+        <p class="ct-label">Resume</p>
+        <p class="ct-card-value">View my resume &rarr;</p>
+      </a>
+      <div class="ct-card ct-card-static">
+        <p class="ct-label">Location</p>
+        <p class="ct-card-value">Lisbon, Portugal</p>
+      </div>
     </div>
-  </div>
- 
+
+    <p class="ct-footer">Not ready to reach out yet? <a href="work.html">Explore my work</a>.</p>
+  </main>
+
+  <script>
+    // Messages are forwarded to my inbox by FormSubmit (formsubmit.co)
+    const form = document.getElementById("contact-form");
+    const status = form.querySelector(".ct-status");
+    const sendButton = form.querySelector(".ct-send");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      sendButton.disabled = true;
+      status.textContent = "Sending...";
+
+      const data = Object.fromEntries(new FormData(form));
+      data._subject = `New message from ${data.name} (portfolio)`;
+      data._template = "table";
+      data._captcha = "false";
+
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/leonor.gaspar.silva@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(data),
+        });
+        if (!response.ok) throw new Error();
+        form.reset();
+        status.textContent = "Thank you! Your message was sent, I'll get back to you soon.";
+      } catch {
+        status.textContent = "Something went wrong. Please email me directly instead.";
+      } finally {
+        sendButton.disabled = false;
+      }
+    });
+
+    document.querySelectorAll(".ct-copy").forEach((button) => {
+      button.addEventListener("click", () => {
+        navigator.clipboard?.writeText(button.dataset.copy).then(() => {
+          button.textContent = "Copied!";
+          setTimeout(() => (button.textContent = "Copy"), 2000);
+        });
+      });
+    });
+  </script>
+
 </body>
 
 </html>

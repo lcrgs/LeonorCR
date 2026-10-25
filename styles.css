@@ -53,6 +53,60 @@
   color: var(--text);;
 }
 
+#lefta-page {
+  --text: #2B6A80;
+  --background: #DDDDD0;
+  color: var(--text);
+}
+
+#neugenpower-page {
+  --text: #2E5233;
+  --background: #E0EDDA;
+  color: var(--text);
+}
+
+#breakingthestigma-page {
+  --text: #E4EBD3;
+  --background: #1F3328;
+  color: var(--text);
+}
+
+#userpsychology-page {
+  --text: #3F4F2F;
+  --background: #E3B65A;
+  color: var(--text);
+}
+
+#peacekeeper-page {
+  --text: #2F3A2A;
+  --background: #CFDABD;
+  color: var(--text);
+}
+
+#shell-page {
+  --text: #F3E9DA;
+  --background: #3E7478;
+  color: var(--text);
+}
+
+#reportingsystem-page {
+  --text: #34405A;
+  --background: #E3E4E8;
+  color: var(--text);
+}
+
+#carsharing-page {
+  --text: #2E4E8C;
+  --background: #E6ECF5;
+  color: var(--text);
+}
+
+#drivefair-page {
+  --text: #003B65;
+  --background: #EDF2F7;
+  color: var(--text);
+}
+
 #uniproj-page {
   --text: #e98668;
   --primary: #e98668;
@@ -691,6 +745,30 @@ body strong {
   transition: all 0.5s ease;
 }
 
+.link-button{
+  border-radius: 5px;
+  color: var(--background);
+  background-color: var(--text);
+  padding: 10px;
+  text-decoration: none;
+  font-size: 13.33px;
+  transition: all 0.5s ease;
+}
+
+.link-button:hover {
+  opacity: 80%;
+}
+
+.gallery .button {
+  margin-bottom: 2rem;
+}
+
+.client-logo {
+  align-self: flex-start;
+  height: 40px;
+  width: auto;
+}
+
 .more-button:hover {
   opacity: 80%;;
 }
@@ -708,6 +786,10 @@ body strong {
   gap: 4rem;
   flex-direction:row;
   grid-template-columns: repeat(2, 1fr);
+}
+
+.project-more > :last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 .project-more.expanded {
@@ -768,6 +850,7 @@ body strong {
   font-size: 1.2em;
   padding: 20px 30px;
   border-radius: 12px;
+  white-space: nowrap;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   opacity: 0;
   z-index: 9999;
@@ -789,22 +872,21 @@ body strong {
   top: 20px;
   right: 20px;
   font-size: 1.4rem;
-  background: var(--background);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: bold;
   color: var(--text);
-  border: 1px solid var(--text);
-  border-radius: 50%;
   width: 40px;
   height: 40px;
   text-align: center;
   line-height: 40px;
   cursor: pointer;
   z-index: 10000;
-  transition: background 0.3s, transform 0.3s;
+  transition: color 0.3s, transform 0.3s;
 }
 
 #info-button:hover {
-  background: var(--text);
-  color: var(--background);
+  color: var(--accent);
   transform: scale(1.1);
 }
 
@@ -830,94 +912,271 @@ body strong {
 
 /* About */
 #about-page {
-  margin: 6.94% 10%;
-  padding: 0;
-  height: 100%;
-}
-
-#about-page-content{
-  display: flex;
-  flex-direction: column;
-  font-family: "Montserrat";
-  gap: 9.78%;
-}
-
-#profile-container{
-  display: flex;
-  flex-direction: row;
-  gap: 9.78%;
-  align-items: stretch;
-
-}
-
-#resume {
-  display: flex;
-  flex-direction: column;
-}
-
-#profile-img{
-  height: 100%;      /* Take full height of the parent */
-  max-height: none;  /* Remove any max height constraints */
-  width: auto;       /* Keep the aspect ratio */
-  object-fit: cover; /* Optional: ensures the image fills the height nicely */
-  border-radius: 1000%;
-  
-}
-
-#whoami-container {
-  max-width: 600px; /* or whatever fits your design */
-}
-#rest-of-profile {
-  margin-top: 3rem; /* space below the photo and who am i */
-  max-width: 900px;
-}
-
-.dropdown-question {
-  font-family: "Montserrat";
-  width: 100%;
-  padding: 12px;
-  font-size: 1.1em;
-  text-align: left;
-  border: none;
-  background: var(--background);
-  cursor: pointer;
-  transition: background 0.3s ease;
-  border-radius: 8px;
-  font-size: 2em;
-  color: var(--text);;
+  display: block;
+  height: auto;
   margin: 0;
-  transition: transform 1s ease, opacity 1s ease;
-  font-weight: bold;
-  padding-bottom: 5%;
-  
+  padding: 4rem 10% 6rem;
+  font-family: "Montserrat";
 }
-.arrow {
+
+#about-page-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+#about-page h2 {
+  font-family: "Masicu";
+  letter-spacing: 0.05em;
+  margin: 0 0 1.25rem;
+}
+
+#profile-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+#profile-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#whoami-container h2 {
+  font-size: 2.6em;
+  margin-bottom: 0.5rem;
+}
+
+.ab-headline {
+  font-size: 1.4em;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 1rem;
+}
+
+#whoami-container p {
+  line-height: 1.7;
+}
+
+#whoami-container a,
+.ab-timeline a,
+.ab-quote a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ab-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+#about-page .ab-button {
   display: inline-block;
-  transition: transform 0.3s ease;
+  padding: 0.7rem 1.4rem;
+  border-radius: 30px;
+  background-color: var(--text);
+  color: var(--background);
+  border: 1px solid var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#about-page .ab-button-outline {
+  background-color: transparent;
+  color: var(--text);
+}
+
+#about-page .ab-button:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.ab-facts {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem 0 0;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.ab-facts li + li::before {
+  content: "\00b7";
+  margin: 0 0.75rem;
+}
+
+.ab-section {
+  margin-top: 5rem;
+}
+
+.ab-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.ab-columns h3 {
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.ab-columns ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  line-height: 1.8;
+}
+
+.ab-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 2px solid var(--text);
+}
+
+.ab-timeline li {
+  position: relative;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.ab-timeline li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.5rem - 7px);
+  top: 0.35rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--text);
+}
+
+.ab-years {
+  display: block;
   font-size: 0.8em;
-  margin-left: 10px;
-  transform: rotate(0deg); /* default state - pointing down */
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
-.dropdown-question.open .arrow {
-  transform: rotate(180deg); /* flipped when open */
+.ab-detail {
+  display: block;
+  opacity: 0.85;
 }
 
-
-
-
-.dropdown-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
-  padding: 0 12px;
+.ab-two {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 3rem;
+  align-items: center;
 }
 
-.dropdown-answer.open {
-  max-height: 0.1%; /* Enough for your content */
-  padding: 12px;
+.ab-two p {
+  line-height: 1.7;
 }
 
+.ab-quote {
+  font-family: "Masicu";
+  font-size: 1.6em;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.ab-quote cite {
+  display: block;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 0.5em;
+  margin-top: 0.75rem;
+}
+
+.ab-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ab-chips li {
+  padding: 0.5rem 1.1rem;
+  border: 1px solid var(--text);
+  border-radius: 30px;
+}
+
+#map {
+  height: 420px;
+  width: 100%;
+  border-radius: 12px;
+  background-color: #f2efeb;
+  z-index: 0;
+}
+
+#map .leaflet-tile-pane {
+  filter: grayscale(1) sepia(0.2) brightness(1.08) contrast(0.8);
+}
+
+#map .leaflet-tooltip {
+  font-family: "Montserrat";
+  font-weight: 600;
+  color: var(--text);
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.ab-places {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.ab-places .ab-chips {
+  flex: 1;
+}
+
+.ab-places button {
+  font-family: "Montserrat";
+  font-size: 0.9em;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--text);
+  border-radius: 30px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ab-places button:hover,
+.ab-places button:focus-visible {
+  background-color: var(--text);
+  color: var(--background);
+}
+
+.ab-places .ab-chips li {
+  padding: 0;
+  border: none;
+}
+
+#map-reset {
+  font-weight: 600;
+}
+
+#resume iframe {
+  width: 100%;
+  height: 700px;
+  border: 1px solid var(--text);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
 
 .highlight-word {
   position: relative;
@@ -940,48 +1199,25 @@ body strong {
   transform-origin: bottom left;
 }
 
+@media only screen and (max-width: 767px) {
+  body#about-page {
+    padding: 3rem 6% 4rem 14% !important;
+  }
 
+  #profile-container,
+  .ab-columns,
+  .ab-two {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 
-#resume-button {
-  display: flex;
-  background-color: var(--text);
-  color: var(--background);
-  border-radius: 5px;
-  border: none;
-  margin-top: 20px;
-  padding: 10px;
-}
+  #profile-img {
+    max-width: 220px;
+  }
 
-#map {
-  height: 50vh; /* Adjust this as needed */
-  width: 100%;
-  margin-top: 2.44%;
-}
-#globe-container {
-  text-align: center;
-}
-
-#whoami-container p {
-  font-size: 300%;
-}
-#rest-of-profile p {
-  font-size: 300%;
-}
-.full-width-button {
-  grid-column: 1 / -1; 
-  display: flex;
-  justify-content: center;
-}
-#resume-button {
-  font-size: 2rem;
-  padding: 15px 40px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 20%;
-}
-#resume-button:hover {
-  background-color: var(--accent);
-  color: white;
+  #resume iframe {
+    height: 480px;
+  }
 }
 
 a {
@@ -1028,6 +1264,187 @@ a:hover {
   color: var(--text);
 }
 
+a.filter-btn {
+  text-decoration: none;
+  text-align: center;
+}
+
+a.filter-btn.active,
+a.filter-btn.active:hover {
+  color: var(--background);
+}
+
+#workContainer .project-tags {
+  letter-spacing: 0.15em;
+  line-height: 1.5;
+}
+
+#workContainer {
+  align-items: stretch;
+}
+
+#workContainer h1 {
+  transform-origin: left center;
+  transition: color 0.3s ease, translate 0.3s ease, transform 0.3s ease;
+}
+
+#workContainer a:hover h1 {
+  color: var(--accent);
+  translate: 6px 0;
+}
+
+body#work-page {
+  transition: background-color 1.2s ease;
+}
+
+#work-page .vanta-canvas {
+  opacity: 0.35;
+}
+
+body#work-page[data-section="more-ux"] {
+  background-color: #6A4A7E;
+}
+
+body#work-page[data-section="other-work"] {
+  background-color: #4F3A5E;
+}
+
+.work-section {
+  margin-bottom: 7rem;
+  scroll-margin-top: 4rem;
+}
+
+.js-reveal .work-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.js-reveal .work-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-section-label {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.9em;
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 0.5rem;
+  margin: 0 0 1rem;
+}
+
+.work-group-label {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.7em;
+  opacity: 0.8;
+  margin: 1rem 0 0.5rem;
+}
+
+#workContainer .work-featured {
+  display: block;
+}
+
+#workContainer .work-featured a {
+  display: block;
+  padding-top: 2rem;
+}
+
+#workContainer .work-featured h1 {
+  font-size: clamp(1.8rem, 3.6vw, 3.4rem);
+  white-space: nowrap;
+  margin: 0 0 0.25rem;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+#workContainer .work-more a {
+  display: block;
+  padding-top: 0;
+}
+
+#workContainer .work-more h1 {
+  font-size: 1.4em;
+  margin: 0 0 0.25rem;
+}
+
+.work-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+#workContainer .work-other {
+  display: block;
+}
+
+#workContainer .work-other a {
+  display: block;
+  padding: 0.6rem 0;
+}
+
+#workContainer .work-other h1 {
+  line-height: 1.15;
+}
+
+#workContainer .work-other h1 {
+  font-size: 0.95em;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .work-grid,
+  .work-columns {
+    grid-template-columns: 1fr;
+  }
+
+  #workContainer .work-featured h1 {
+    white-space: normal;
+    font-size: 2.2rem !important;
+  }
+
+  body#work-page {
+    display: block;
+    height: auto;
+  }
+
+  #work-page .description-container,
+  #work-page .tag-filter-container,
+  #work-page #workContainer {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    z-index: 1;
+  }
+
+  #work-page .description-container {
+    margin: 2rem 0 0 10% !important;
+    width: 85%;
+    letter-spacing: 0.1em;
+  }
+
+  #work-page .tag-filter-container {
+    display: flex !important;
+    flex-wrap: wrap;
+    margin: 1rem 0 0 10% !important;
+  }
+
+  #work-page #workContainer {
+    margin: 3rem 5% 0 10% !important;
+    padding: 0 0 4rem !important;
+  }
+}
+
 
 #workContainer a span {
   display: inline-block;
@@ -1057,6 +1474,199 @@ a:hover {
 #pandagas-gallery .two-gallery img {
   max-height: 500px;
   height: 300px;
+}
+
+/* Reporting on X & Sharing the Car */
+#reportingsystem-page figure,
+#carsharing-page figure,
+#drivefair-page figure,
+#lefta-page figure,
+#neugenpower-page figure {
+  margin: 0;
+}
+
+#reportingsystem-page figure img,
+#carsharing-page figure img,
+#drivefair-page figure img,
+#lefta-page figure img,
+#neugenpower-page figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+#reportingsystem-page figcaption,
+#carsharing-page figcaption,
+#drivefair-page figcaption,
+#lefta-page figcaption,
+#neugenpower-page figcaption {
+  font-size: 0.9em;
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+.rs-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.rs-phones {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+#reportingsystem-page .rs-phones img {
+  width: auto;
+  max-width: 48%;
+  height: 320px;
+  object-fit: contain;
+}
+
+.rs-findings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 2rem 0 3rem;
+}
+
+.rs-number {
+  font-family: "Masicu";
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.rs-chart-title {
+  font-style: italic;
+  margin: 2rem 0 1rem;
+}
+
+.rs-note {
+  font-size: 0.85em;
+  opacity: 0.8;
+}
+
+#lefta-page .lefta-pair img {
+  max-width: 260px;
+  display: block;
+  margin: 0 auto;
+}
+
+.df-screens {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  align-items: start;
+  margin: 1.5rem 0 2rem;
+}
+
+.df-screens-3 {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+#drivefair-page .df-screens img {
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+#drivefair-page .df-screens-3 img {
+  max-width: 260px;
+  display: block;
+  margin: 0 auto;
+}
+
+.df-persona {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.df-persona blockquote,
+.df-quote {
+  font-family: "Masicu";
+  font-size: 1.4em;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.df-quote {
+  margin: 1rem 0 2rem;
+}
+
+.df-persona cite,
+.df-quote cite {
+  display: block;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-size: 0.55em;
+  margin-top: 1rem;
+}
+
+.cs-question {
+  font-family: "Masicu";
+  font-size: 2em;
+  line-height: 1.3;
+  margin: 1.5rem 0 2rem;
+}
+
+.cs-hypotheses {
+  display: grid;
+  gap: 1.25rem;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0 2rem;
+  line-height: 1.5;
+}
+
+.cs-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.cs-steps > div {
+  border-top: 3px solid var(--text);
+  padding-top: 1rem;
+}
+
+.cs-steps h3 {
+  margin: 0.25rem 0 0.75rem;
+  font-weight: 600;
+}
+
+.cs-step-label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.8em;
+  margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  .rs-compare,
+  .rs-findings,
+  .cs-steps,
+  .df-persona,
+  .df-screens-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .df-screens {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cs-question {
+    font-size: 1.4em;
+  }
+
+  #reportingsystem-page .rs-phones img {
+    height: 240px;
+  }
 }
 
 /* Industrial Application */
@@ -1108,17 +1718,209 @@ a:hover {
 
 /* Contact */
 #contact-page {
-  margin: 100px;
-  padding: 0;
-  height: 100%;
+  display: block;
+  height: auto;
+  min-height: 100vh;
+  margin: 0;
+  padding: 5rem 10% 4rem;
+  box-sizing: border-box;
+  font-family: "Montserrat";
 }
 
-#contact-page-content{
-  display: flex;
-  flex-direction: column;
-  padding-right: 100px;
+#contact-page-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ct-title {
+  font-family: "Masicu";
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.ct-intro {
+  font-size: 1.3em;
+  line-height: 1.6;
+  max-width: 620px;
+  margin: 1rem 0 3.5rem;
+}
+
+.ct-label {
+  font-size: 0.75em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  opacity: 0.75;
+  margin: 0 0 0.5rem;
+}
+
+.ct-email {
+  padding: 2rem;
+  border-radius: 16px;
+  background-color: color-mix(in srgb, var(--text) 7%, transparent);
+  margin-bottom: 1.5rem;
+}
+
+#contact-page .ct-email-link {
+  display: inline-block;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 600;
+  word-break: break-all;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  margin-right: 1rem;
+}
+
+.ct-copy {
   font-family: "Montserrat";
-  gap: 80px;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  margin-top: 0.75rem;
+  border: 1px solid var(--text);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  vertical-align: middle;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ct-copy:hover {
+  background-color: var(--text);
+  color: var(--background);
+}
+
+.ct-form {
+  display: grid;
+  gap: 1rem;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--text);
+  border-radius: 16px;
+}
+
+.ct-form .ct-label {
+  margin: 0;
+}
+
+.ct-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.ct-form label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.ct-form input,
+.ct-form textarea {
+  font-family: "Montserrat";
+  font-size: 1rem;
+  color: var(--text);
+  padding: 0.75rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 35%, transparent);
+  border-radius: 10px;
+  background-color: #fff;
+  resize: vertical;
+}
+
+.ct-form input:focus,
+.ct-form textarea:focus {
+  outline: 2px solid var(--text);
+  outline-offset: 1px;
+}
+
+.ct-honey {
+  position: absolute;
+  left: -9999px;
+}
+
+.ct-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ct-send {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1.6rem;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--text);
+  color: var(--background);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.ct-send:hover {
+  opacity: 0.85;
+}
+
+.ct-send:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.ct-status {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.ct-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+#contact-page .ct-card {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid var(--text);
+  border-radius: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#contact-page a.ct-card:hover {
+  background-color: var(--text);
+  color: var(--background);
+}
+
+.ct-card-value {
+  font-size: 1.15em;
+  font-weight: 600;
+  margin: 0;
+}
+
+.ct-footer {
+  margin-top: 3.5rem;
+}
+
+#contact-page .ct-footer a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media only screen and (max-width: 767px) {
+  body#contact-page {
+    padding: 3rem 6% 3rem 14% !important;
+  }
+
+  .ct-cards,
+  .ct-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  #contact-page .ct-title {
+    font-size: 3rem !important;
+  }
 }
 
 
@@ -1260,7 +2062,7 @@ a:hover {
   }
   
   /* Adjust buttons */
-  .more-button, .view-button {
+  .more-button, .view-button, .link-button {
     padding: 5px !important;
   }
   
@@ -1379,7 +2181,7 @@ a:hover {
   }
   
   /* Adjust buttons */
-  .more-button, .view-button {
+  .more-button, .view-button, .link-button {
     padding: 5px !important;
   }
   

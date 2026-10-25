@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Page</title>
+  <meta name="description" content="About Leonor Gaspar da Silva, a UX and interaction designer with a background in Computer Science.">
+  <title>About - Leonor Gaspar da Silva</title>
+  <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -17,83 +19,153 @@
   </header>
 
 
-  <!-- Actual content of the About page -->
   <div id="about-page-content">
-    <div id="profile-container">
-      <img src="profile.png" alt="Profile Picture" id="profile-img">
+
+    <!-- Intro -->
+    <section id="profile-container">
+      <img src="profile.JPG" alt="Leonor Gaspar da Silva" id="profile-img">
 
       <div id="whoami-container">
-        <h2>Who am I?</h2>
-        <p>Hi! I'm <a href="https://www.linkedin.com/in/leonorgaspardasilva/" target="_blank"
-            rel="noopener noreferrer">Leonor CR</a>, a Computer Science and Engineering student at <a
-            href="https://www.fct.unl.pt/en" target="_blank" rel="noopener noreferrer">NOVA University of Lisbon</a>.
+        <h2>Hi, I'm Leonor.</h2>
+        <p class="ab-headline">A UX and interaction designer who brings logic and creativity together.</p>
+        <p>
+          I grew up in Lisbon, studied Computer Science and Engineering at
+          <a href="https://www.fct.unl.pt/en" target="_blank" rel="noopener noreferrer">NOVA University of Lisbon</a>,
+          and completed an MSc in User Experience and Interaction Design in Glasgow, at
+          <a href="https://www.gcu.ac.uk/" target="_blank" rel="noopener noreferrer">Glasgow Caledonian University</a>.
+          My rational side loves maths and problem-solving, while my creative side finds expression in all forms of
+          art, and that includes coding.
+        </p>
+        <div class="ab-actions">
+          <a class="ab-button" href="Resume_LGS.pdf" target="_blank" rel="noopener">View My Resume</a>
+          <a class="ab-button ab-button-outline" href="contact.html">Get in Touch</a>
+          <a class="ab-button ab-button-outline" href="https://www.linkedin.com/in/leonorgaspardasilva/"
+            target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick facts -->
+    <ul class="ab-facts">
+      <li>Based in Lisbon</li>
+      <li>Speaks Portuguese, English, French and Spanish</li>
+    </ul>
+
+    <!-- Skills -->
+    <section class="ab-section">
+      <h2>What I Bring</h2>
+      <div class="ab-columns">
+        <div>
+          <h3>Research</h3>
+          <ul>
+            <li>Interviews, questionnaires and diary studies</li>
+            <li>Usability testing and A/B testing</li>
+            <li>Eye-tracking and facial analysis</li>
+            <li>Thematic and statistical analysis</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Design</h3>
+          <ul>
+            <li>Prototyping in Figma</li>
+            <li>Design systems and brand identity</li>
+            <li>Accessibility and WCAG</li>
+            <li>Personas, journeys and task flows</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Technical</h3>
+          <ul>
+            <li>BSc in Computer Science and Engineering</li>
+            <li>HTML, CSS and JavaScript</li>
+            <li>Python, Java and C</li>
+            <li>WordPress</li>
+            <li>3D with 3ds Max and Unreal Engine</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Journey -->
+    <section class="ab-section">
+      <h2>My Journey</h2>
+      <ol class="ab-timeline">
+        <li>
+          <span class="ab-years">2025 &ndash; 2026</span>
+          <strong>MSc User Experience and Interaction Design</strong>, Glasgow Caledonian University
+          <span class="ab-detail">Where I learned to design for people, ending with my dissertation,
+            <a href="work/drivefair.html">DriveFair</a>.</span>
+        </li>
+        <li>
+          <span class="ab-years">2022 &ndash; 2025</span>
+          <strong>BSc Computer Science and Engineering</strong>, NOVA University of Lisbon
+          <span class="ab-detail">Where I learned to think logically and build things.</span>
+        </li>
+        <li>
+          <span class="ab-years">2009 &ndash; 2022</span>
+          <strong>Lyc&eacute;e Fran&ccedil;ais Charles Lepierre</strong>, Lisbon
+          <span class="ab-detail">International French school, with a specialisation in IT and Mathematics.</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="ab-section ab-two">
+      <div>
+        <h2>My Design Philosophy</h2>
+        <p>
+          I believe design should be <span class="highlight-word">human-centred</span>,
+          <span class="highlight-word">accessible</span> and <span class="highlight-word">purposeful</span>. I'm
+          fascinated by how technology shapes our lives, and how intuitive design can make complex tasks feel
+          effortless.
         </p>
       </div>
-    </div>
+      <blockquote class="ab-quote">
+        &ldquo;<a href="https://www.nngroup.com/books/emotional-design/" target="_blank" rel="noopener noreferrer">Attractive
+          things work better</a>.&rdquo;
+        <cite>Don A. Norman</cite>
+      </blockquote>
+    </section>
 
-    <div id="rest-of-profile">
-      <div class="profile-item">
-        <button class="dropdown-question">What inspires me? <span class="arrow">&#9662;</span></button>
-        <div class="dropdown-answer">
-          <p>I'm fascinated by how <span class="highlight-word">technology</span> shapes our lives and how <span
-              class="highlight-word">intuitive design</span> can make complex tasks feel
-            effortless.</p>
-        </div>
+    <!-- Hobbies -->
+    <section class="ab-section">
+      <h2>Beyond Design</h2>
+      <ul class="ab-chips">
+        <li>Padel</li>
+        <li>Surf</li>
+        <li>Running</li>
+        <li>Photography</li>
+        <li>Video Production</li>
+        <li>Volunteering</li>
+        <li>Travel</li>
+      </ul>
+    </section>
+
+    <!-- Map -->
+    <section class="ab-section" id="globe-container">
+      <h2>Places I've Travelled To</h2>
+      <div id="map" role="region" aria-label="Map of places I've travelled to"></div>
+      <div class="ab-places">
+        <ul id="places-list" class="ab-chips"></ul>
+        <button type="button" id="map-reset">Show all</button>
       </div>
+    </section>
 
-      <div class="profile-item">
-        <button class="dropdown-question">My design philosophy <span class="arrow">&#9662;</span></button>
-        <div class="dropdown-answer">
-          <p>I believe design should be <span class="highlight-word">human-centered</span>, <span
-              class="highlight-word">accessible</span>, and <span class="highlight-word">purposeful</span>. I aim to
-            create interfaces that are <span class="highlight-word">simple</span>, <span
-              class="highlight-word">empathetic</span>, and <span class="highlight-word">enhance the user
-              experience</span>.</p>
-        </div>
-      </div>
-
-      <div class="profile-item">
-        <button class="dropdown-question">Hobbies <span class="arrow">&#9662;</span></button>
-        <div class="dropdown-answer">
-          <p>Padel, Surf, Running, Swimming, Photography, Video Production, Volunteering and Travel</p>
-        </div>
-      </div>
-
-      <div class="profile-item">
-        <button class="dropdown-question">Quote <span class="arrow">&#9662;</span></button>
-        <div class="dropdown-answer">
-          <p><a href="https://www.nngroup.com/books/emotional-design/" target="_blank"
-              rel="noopener noreferrer">Attractive things work better</a> - Don A. Norman</p>
-        </div>
-      </div>
-
-      <div class="profile-item full-width-button">
-        <button id="resume-button">View My Resume</button>
-      </div>
-    </div>
-
-
-    <!-- Add this div after your "resume" section to hold the map -->
-    <div id="globe-container">
-      <h2>Countries I've Traveled To</h2>
-      <div id="map"></div>
-    </div>
-
-    <div id="resume">
-      <p>View my resume below:</p>
-      <iframe src="Resume_LGS.pdf" width="100%" height="600px" style="border: none;"></iframe>
-    </div>
+    <!-- Resume -->
+    <section class="ab-section" id="resume">
+      <h2>Resume</h2>
+      <iframe src="Resume_LGS.pdf" title="Leonor Gaspar da Silva resume"></iframe>
+      <a class="ab-button" href="Resume_LGS.pdf" download>Download PDF</a>
+    </section>
   </div>
 
-
-
-
+  <audio id="hover-sound" src="hover-sound.wav" preload="auto"></audio>
 
   <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
   <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script src="script.js"></script>
 
@@ -101,7 +173,6 @@
  
 
 </body>
-<audio id="hover-sound" src="hover-sound.mp3" preload="auto"></audio>
 
 
 </html>

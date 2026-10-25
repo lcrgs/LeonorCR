@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Shell</title>
+  <link rel="icon" type="image/png" href="../icon.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body id="shell-page">
+  <header class="top-menu">
+    <a href="../index.html">
+      <h3>Home</h3>
+    </a>
+  </header>
+
+  <div class="content-container">
+    <h4>THE SHELL</h4>
+    <section>
+      <h1>From 124 photographs.<br>To a model ready for VR and 3D printing.</h1>
+    </section>
+    <div class="project-info">
+      <h3>Photogrammetry</h3>
+      <h3>3D Modelling</h3>
+      <h3>Real-Time Rendering</h3>
+      <div class="button">
+        <button class="view-button">View</button>
+      </div>
+    </div>
+    <div>
+      <h3>RealityCapture | 3ds Max | Unreal Engine</h3>
+    </div>
+
+    <section class="project-content">
+      <div>
+        <h2>Brief</h2>
+        <p>
+          For the 3D Production for Virtual Reality module of my MSc at Glasgow Caledonian University, I scanned a
+          real-world object with <span class="underline">photogrammetry</span> and took it through the full production
+          pipeline: from photographs to a game-ready model in Unreal Engine and a watertight file for 3D printing.
+        </p>
+      </div>
+      <div>
+        <h2>Roles</h2>
+        <p>
+          - 3D Artist (Solo Project)<br>
+          - Photographed, scanned and reconstructed the object.<br>
+          - Cleaned, retopologised, unwrapped and baked the model.<br>
+          - Prepared the STL and rendered the final scene.
+        </p>
+      </div>
+    </section>
+
+    <div class="button">
+      <button class="more-button" onclick="toggleMore()">More</button>
+    </div>
+
+    <div class="project-more">
+      <section>
+        <h2>Challenges & Strategy</h2>
+        <p>
+          Photogrammetry is unpredictable, and choosing the right object is the most important decision.
+        </p>
+        <p>
+          <strong>- Paper boat:</strong> A white object on a white background left the software unable to find the
+          edges, producing a mountain-like shape.<br>
+          <strong>- Hat:</strong> A single colour and two concave surfaces caused misaligned, overlapping geometry.<br>
+          <strong>- The shell:</strong> Natural colour bands, solid geometry and no reflective surfaces made it the
+          ideal subject. 124 photos with high overlap aligned on the first attempt.
+        </p>
+      </section>
+
+      <section>
+        <h2>The Pipeline</h2>
+        <p>
+          <strong>- RealityCapture:</strong> Aligned the images, set a tight reconstruction region, and computed and
+          textured the mesh.<br>
+          <strong>- Retopology:</strong> Reduced the model from 469,000 to 5,000 polygons while keeping its ridges and
+          curvature.<br>
+          <strong>- UV & Baking:</strong> A clean two-island UV unwrap, then baked the high-poly colour and detail onto
+          the low-poly mesh.<br>
+          <strong>- 3D Printing:</strong> Added thickness, capped the holes and passed the STL check: clean and
+          watertight.
+        </p>
+      </section>
+
+      <section>
+        <h2>Results & Reflection</h2>
+        <p>
+          <strong>- Result:</strong> The final baked model stayed very close to the original scan and holds up well at
+          close range in Unreal Engine.<br>
+          <strong>- Next time:</strong> I would capture more angles from below, add a normal map for the ridges and
+          choose a more complex subject to explore more of 3ds Max.
+        </p>
+      </section>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+      <h2>Final Renders in Unreal Engine</h2>
+      <div class="carousel-container">
+        <div class="carousel">
+          <img src="../shell/render-1.jpg" alt="Shell Render in Unreal Engine 1" loading="lazy">
+          <img src="../shell/render-2.jpg" alt="Shell Render in Unreal Engine 2" loading="lazy">
+          <img src="../shell/render-3.jpg" alt="Shell Render in Unreal Engine 3" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <h2>Process</h2>
+      <div class="carousel-container">
+        <div class="carousel">
+          <img src="../shell/01-cover.jpg" alt="The Shell" loading="lazy">
+          <img src="../shell/02-attempt-paper-boat.jpg" alt="Initial Attempt: Paper Boat" loading="lazy">
+          <img src="../shell/03-attempt-hat.jpg" alt="Initial Attempt: Hat" loading="lazy">
+          <img src="../shell/05-photogrammetry-capture.jpg" alt="Photogrammetry: Capturing the Shell" loading="lazy">
+          <img src="../shell/06-photogrammetry-mesh.jpg" alt="Photogrammetry: Computing the Mesh" loading="lazy">
+          <img src="../shell/07-3ds-max-cleanup.jpg" alt="Cleaning the Model in 3ds Max" loading="lazy">
+          <img src="../shell/08-retopology.jpg" alt="Retopology: 469,000 to 5,000 Polygons" loading="lazy">
+          <img src="../shell/09-thickness.jpg" alt="Adding Thickness" loading="lazy">
+          <img src="../shell/10-uv-unwrapping.jpg" alt="UV Unwrapping" loading="lazy">
+          <img src="../shell/11-baking.jpg" alt="Baking the Texture" loading="lazy">
+          <img src="../shell/12-stl-export.jpg" alt="STL Export" loading="lazy">
+          <img src="../shell/13-unreal-engine.jpg" alt="Importing into Unreal Engine" loading="lazy">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

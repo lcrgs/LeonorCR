@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DriveFair</title>
+  <link rel="icon" type="image/png" href="../icon.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body id="drivefair-page">
+  <header class="top-menu">
+    <a href="../index.html">
+      <h3>Home</h3>
+    </a>
+  </header>
+
+  <div class="content-container">
+    <h4>DRIVEFAIR</h4>
+    <section>
+      <h1>Share the drive, split the cost.<br>Fairness for people who share a car.</h1>
+    </section>
+    <div class="project-info">
+      <h3>UX Research</h3>
+      <h3>App Design</h3>
+      <h3>User Evaluation</h3>
+      <div class="button">
+        <button class="view-button">View</button>
+      </div>
+    </div>
+    <div>
+      <h3>Figma | Double Diamond | Interviews | Wilcoxon Signed-Rank Test</h3>
+    </div>
+
+    <section class="project-content">
+      <div>
+        <h2>Brief</h2>
+        <p>
+          My MSc dissertation at Glasgow Caledonian University. When family, flatmates or friends share a car, the
+          person who drives more, or drives harder, is quietly subsidised by everyone else. DriveFair is an app concept
+          that tracks each person's driving and <span class="underline">splits the real costs fairly</span>, including
+          the wear and tear nobody counts.
+        </p>
+      </div>
+      <div>
+        <h2>Roles</h2>
+        <p>
+          - UX Researcher & Designer (Solo Project)<br>
+          - Ran a questionnaire with 47 responses and five interviews.<br>
+          - Designed the brand and a 30-screen high-fidelity prototype in Figma.<br>
+          - Evaluated it with users and analysed the results statistically.
+        </p>
+      </div>
+    </section>
+
+    <div class="button">
+      <button class="more-button" onclick="toggleMore()">More</button>
+    </div>
+
+    <div class="project-more">
+      <section>
+        <h2>Research Question</h2>
+        <p>
+          Would providing visibility into individual driving behaviour and its estimated cost impact increase perceived
+          fairness, trust and willingness to use in informal car-sharing groups, compared to their current methods?
+        </p>
+        <p>
+          <strong>- The gap:</strong> Expense apps like Splitwise split bills, and commercial platforms serve strangers.
+          No tool links driving behaviour to a fair split within trusted groups.
+        </p>
+      </section>
+
+      <section>
+        <h2>The Process</h2>
+        <p>
+          <strong>- Discover:</strong> A screening questionnaire and exploratory interviews.<br>
+          <strong>- Define:</strong> Affinity mapping, empathy maps, three personas, POVs, HMWs, Kano and MoSCoW.<br>
+          <strong>- Develop:</strong> Brand identity, crazy 8s, lo-fi and mid-fi wireframes, then a high-fidelity
+          prototype with a full design system.<br>
+          <strong>- Deliver:</strong> Pre and post questionnaires and interviews with six participants.
+        </p>
+      </section>
+
+      <section>
+        <h2>Key Insight & Next Steps</h2>
+        <p>
+          <strong>- Trust has two parts:</strong> trusting the app's calculations, and trusting the group to enter honest
+          data. Transparency solves the first; the second needs peer accountability, like photos of fuel receipts.<br>
+          <strong>- Roadmap:</strong> An FAQ for edge cases like accidents, group chat, identity verification for less
+          familiar members, and keeping per-trip costs as the main view rather than monthly summaries.
+        </p>
+      </section>
+    </div>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+      <h2>How It Started</h2>
+      <p>
+        DriveFair began as my MSc research proposal: a qualitative study into how families, couples and friends manage
+        the money and logistics of sharing one car. The focus then shifted from documenting these arrangements to
+        designing, and testing, a tool that could make them fairer.
+        <a href="carsharing.html">Read the original proposal.</a>
+      </p>
+    </section>
+
+    <section class="gallery">
+      <h2>The Problem</h2>
+      <div class="rs-findings">
+        <div>
+          <p class="rs-number">84%</p>
+          <p>of sharers split fuel, the only cost groups consistently share.</p>
+        </div>
+        <div>
+          <p class="rs-number">0</p>
+          <p>account for wear and depreciation. Most rely on memory or verbal agreements.</p>
+        </div>
+        <div>
+          <p class="rs-number">Quiet</p>
+          <p>conflict: few disagreements are reported, but unfairness is felt and rarely discussed.</p>
+        </div>
+      </div>
+      <div class="df-persona">
+        <figure>
+          <img src="../drivefair/persona-maria.png" alt="Persona: Maria Cruz, 42, family sharer" loading="lazy">
+        </figure>
+        <blockquote>
+          "I just pay for everything, but I'm not sure if it's really fair. I don't want to start an argument over
+          money, but I'd feel better if I knew."
+          <cite>Maria, one of three personas built from the research</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <h2>How It Works</h2>
+      <div class="df-screens">
+        <figure>
+          <img src="../drivefair/screen-welcome.png" alt="DriveFair welcome screen" loading="lazy">
+          <figcaption><strong>1. Set up a group</strong> for the shared car.</figcaption>
+        </figure>
+        <figure>
+          <img src="../drivefair/screen-dashboard.png" alt="DriveFair dashboard" loading="lazy">
+          <figcaption><strong>2. Dashboard:</strong> Start Trip comes first, with the month's costs at a glance.</figcaption>
+        </figure>
+        <figure>
+          <img src="../drivefair/screen-trip-in-progress.png" alt="Trip in progress" loading="lazy">
+          <figcaption><strong>3. Drive:</strong> the phone tracks distance and driving events.</figcaption>
+        </figure>
+        <figure>
+          <img src="../drivefair/screen-trip-complete.png" alt="Trip complete summary" loading="lazy">
+          <figcaption><strong>4. Trip cost:</strong> fuel plus wear, based on how you drove.</figcaption>
+        </figure>
+        <figure>
+          <img src="../drivefair/screen-how-calculated.png" alt="How is this calculated explainer" loading="lazy">
+          <figcaption><strong>5. Full transparency:</strong> every formula is explained.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <h2>Designed for Trust</h2>
+      <div class="df-screens df-screens-3">
+        <figure>
+          <img src="../drivefair/screen-privacy.png" alt="Privacy settings" loading="lazy">
+          <figcaption><strong>Privacy first:</strong> choose who sees your trips and driving behaviour.</figcaption>
+        </figure>
+        <figure>
+          <img src="../drivefair/screen-driving-style.png" alt="Driving style overview" loading="lazy">
+          <figcaption><strong>Feedback, not judgement:</strong> driving style is shown simply, and hidden data stays
+            hidden.</figcaption>
+        </figure>
+        <figure>
+          <img src="../drivefair/screen-accessibility.png" alt="Accessibility settings" loading="lazy">
+          <figcaption><strong>Accessible:</strong> text size, high contrast, colour blindness modes and reduced
+            motion.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <h2>From Sketch to Prototype</h2>
+      <div class="carousel-container">
+        <div class="carousel">
+          <img src="../drivefair/crazy-8s.jpg" alt="Crazy 8s sketches" loading="lazy">
+          <img src="../drivefair/lofi-wireframes.jpg" alt="Lo-fi wireframes" loading="lazy">
+          <img src="../drivefair/midfi-prototype.jpg" alt="Mid-fidelity prototype" loading="lazy">
+          <img src="../drivefair/colour-palette.png" alt="DriveFair colour palette" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <h2>Results</h2>
+      <div class="rs-findings">
+        <div>
+          <p class="rs-number">2.4 → 4.9</p>
+          <p>perceived fairness out of 5, before vs after seeing DriveFair (p = 0.031).</p>
+        </div>
+        <div>
+          <p class="rs-number">2.5 → 4.8</p>
+          <p>trust out of 5. Every participant rated both higher, with no exceptions (p = 0.031).</p>
+        </div>
+        <div>
+          <p class="rs-number">6 of 6</p>
+          <p>participants preferred DriveFair to their current method.</p>
+        </div>
+      </div>
+      <blockquote class="df-quote">
+        "I'm very happy to know that there's a solution for a problem I've been having for a long time... this problem
+        has been recognised."
+        <cite>Participant, Deliver phase</cite>
+      </blockquote>
+    </section>
+
+    <section class="gallery">
+      <h2>Video Presentation</h2>
+      <div class="video-wrapper">
+        <video controls class="portfolio-video" preload="metadata" poster="../drivefair/video-poster.jpg">
+          <source src="../drivefair/video-presentation.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>

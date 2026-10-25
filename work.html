@@ -4,8 +4,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work</title>
+  <meta name="description" content="UX case studies and other work by Leonor Gaspar da Silva, UX and interaction designer.">
+  <title>Work - Leonor Gaspar da Silva</title>
+  <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="styles.css">
+  <!-- Work page colour scheme (matches About and Contact) -->
+  <style>
+    :root {
+      --text: #8d4747;
+      --background: #f7f4f1;
+      --primary: #d9c3bd;
+      --accent: #c46f62;
+      --secondary: #8d4747;
+    }
+    body#work-page[data-section="more-ux"] { background-color: #f2ebe6; }
+    body#work-page[data-section="other-work"] { background-color: #ece2db; }
+    a.filter-btn.active, a.filter-btn.active:hover { color: #fff; }
+
+    /* Hovering a project shows that project's colours */
+    body#work-page {
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    #work-page .description-container h2,
+    #work-page .description,
+    #work-page .top-menu h3,
+    #work-page .work-section-label,
+    #work-page .work-group-label,
+    #work-page .project-tags,
+    #work-page #workContainer h1 {
+      transition: color 0.5s ease, border-color 0.5s ease, translate 0.3s ease, transform 0.3s ease;
+    }
+    #work-page .filter-btn {
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    #work-page.project-hover a.filter-btn.active {
+      color: var(--background);
+    }
+
+    /* Expanding rows: a short description opens under each project title */
+    .proj-more {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition: grid-template-rows 0.4s ease, opacity 0.3s ease;
+    }
+    .proj-more > div {
+      overflow: hidden;
+      min-height: 0;
+    }
+    #workContainer a:hover .proj-more,
+    #workContainer a:focus-visible .proj-more,
+    #workContainer a.open .proj-more {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+    .proj-summary {
+      font-family: "Montserrat", sans-serif;
+      text-transform: none;
+      letter-spacing: 0.02em;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      max-width: 520px;
+      margin: 0.6rem 0 0.4rem;
+    }
+    .work-more .proj-summary {
+      font-size: 0.85rem;
+      margin: 0.3rem 0 0;
+    }
+    .work-other .proj-summary {
+      font-size: 0.72rem;
+      line-height: 1.4;
+      margin: 0.25rem 0 0;
+    }
+    .proj-meta {
+      font-family: "Montserrat", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      opacity: 0.75;
+      margin: 0 0 0.5rem;
+    }
+  </style>
 </head>
 
 <body id="work-page">
@@ -22,93 +101,226 @@
   <div class="description-container">
     <h2>Work</h2>
     <p class="description">
-      This is a showcase of my best work in a variety of fields including Graphic and Web Design, No-Code
-      Development,
-      Product Design and Product Management.
+      UX and interaction designer with an MSc from Glasgow Caledonian University and a background in computer
+      science. Start with my case studies, or explore more of what I've made.
     </p>
   </div>
 
-  <!-- Tag Filters -->
+  <!-- Section Links -->
   <div class="tag-filter-container">
-    <button class="filter-btn" data-tag="All"><span>All</span></button>
-    <button class="filter-btn" data-tag="App&Web"><span>App & Web Design</span></button>
-    <button class="filter-btn" data-tag="GraphicDesign"><span>Graphic Design</span></button>
-    <button class="filter-btn" data-tag="VisualMedia"><span>Visual Media</span> </button>
-    <button class="filter-btn" data-tag="Tech&Automation"><span>Tech & Automation</span> </button>
-    <button class="filter-btn" data-tag="Entrepeneurship"><span>Entrepeneurship</span> </button>
+    <a class="filter-btn" href="#featured"><span>Case Studies</span></a>
+    <a class="filter-btn" href="#more-ux"><span>More UX Work</span></a>
+    <a class="filter-btn" href="#other-work"><span>Other Work</span></a>
   </div>
 
   <div class="menu-container" id="workContainer">
-    <span>
-      <a href="work/pandagas.html" data-tags="App&Web Entrepeneurship">
-        <h1>PandaGas</h1>
-        <p class="project-tags">App & Web, Entrepeneurship</p>
-      </a>
-    </span>
+    <section class="work-section" id="featured">
+      <p class="work-section-label">Featured Case Studies</p>
+      <span class="work-featured">
+        <a href="work/drivefair.html">
+          <h1>DriveFair</h1>
+          <p class="project-tags">MSc Dissertation &middot; Fairness rated from 2.4 to 4.9 in testing</p>
+            <div class="proj-more"><div>
+              <p class="proj-summary">An app concept that tracks who drives a shared car, and how, to split the real costs fairly within families, flatmates and friends.</p>
+              <p class="proj-meta">MSc dissertation · Research, Figma prototype, user testing · 2026</p>
+            </div></div>
+          </a>
+      </span>
+      <span class="work-featured">
+        <a href="work/neugenpower.html">
+          <h1>NeuGenPower</h1>
+          <p class="project-tags">Visual Design &middot; Presented at ScottishPower</p>
+            <div class="proj-more"><div>
+              <p class="proj-summary">A platform for sharing solar and battery energy between neighbours, designed for a new ScottishPower brand.</p>
+              <p class="proj-meta">Visual design, design system, Figma prototype · 2025</p>
+            </div></div>
+          </a>
+      </span>
+      <span class="work-featured">
+        <a href="work/lefta.html">
+          <h1>Lefta Wealth</h1>
+          <p class="project-tags">UX/UI Design &middot; A fintech app from research to prototype</p>
+            <div class="proj-more"><div>
+              <p class="proj-summary">A Stocks & Shares ISA app that brings a 100-year-old bank's trust to younger investors, without the jargon.</p>
+              <p class="proj-meta">UX research, UX/UI design, prototyping · 2025</p>
+            </div></div>
+          </a>
+      </span>
+      <span class="work-featured">
+        <a href="work/reportingsystem.html">
+          <h1>Reporting on X</h1>
+          <p class="project-tags">Usability Testing &middot; Eye-tracking and facial analysis study</p>
+            <div class="proj-more"><div>
+              <p class="proj-summary">A study of how hard it is to report harmful content on X, comparing the current flow with our two-click redesign.</p>
+              <p class="proj-meta">Team of four · Figma prototypes, eye-tracking, facial analysis · 2026</p>
+            </div></div>
+          </a>
+      </span>
+    </section>
 
-    <span>
-      <a href="work/nusurf.html" data-tags="GraphicDesign Entrepeneurship">
-        <h1>NuSurf</h1>
-        <p class="project-tags">Graphic Design, Entrepeneurship</p>
-      </a>
-    </span>
+    <section class="work-section" id="more-ux">
+      <p class="work-section-label">More UX Work</p>
+      <div class="work-grid">
+        <span class="work-more">
+          <a href="work/peacekeeper.html">
+            <h1>The Peacekeeper</h1>
+            <p class="project-tags">AI mediator concept &middot; Affective computing</p>
+            <div class="proj-more"><div>
+              <p class="proj-summary">An AI device that calms heated conversations.</p>
+            </div></div>
+          </a>
+        </span>
+        <span class="work-more">
+          <a href="work/pandagas.html">
+            <h1>PandaGas</h1>
+            <p class="project-tags">Car-sharing app concept</p>
+            <div class="proj-more"><div>
+              <p class="proj-summary">An app that splits shared car costs.</p>
+            </div></div>
+          </a>
+        </span>
+        <span class="work-more">
+          <a href="work/breakingthestigma.html">
+            <h1>Breaking the Stigma</h1>
+            <p class="project-tags">AR game &middot; UX advisory report</p>
+            <div class="proj-more"><div>
+              <p class="proj-summary">An AR game about poverty stigma.</p>
+            </div></div>
+          </a>
+        </span>
+        <span class="work-more">
+          <a href="work/userpsychology.html">
+            <h1>User Psychology</h1>
+            <p class="project-tags">Psychology for design &middot; Academic portfolio</p>
+            <div class="proj-more"><div>
+              <p class="proj-summary">Psychology applied to everyday design.</p>
+            </div></div>
+          </a>
+        </span>
+      </div>
+    </section>
 
-    <span>
-      <a href="work/batotadoce.html" data-tags="GraphicDesign Entrepeneurship">
-        <h1>BatotaDoce</h1>
-        <p class="project-tags">Graphic Design, Entrepeneurship</p>
-      </a>
-    </span>
-
-    <span>
-      <a href="work/conswebsite.html" data-tags="App&Web">
-        <h1>Consulting Website</h1>
-        <p class="project-tags">App & Web</p>
-      </a>
-    </span>
-
-    <span>
-      <a href="work/industapplication.html" data-tags="Tech&Automation">
-        <h1>Industrial Application</h1>
-        <p class="project-tags">Tech & Automation</p>
-      </a>
-    </span>
-
-    <span>
-      <a href="work/sonhovinho.html" data-tags="GraphicDesign VisualMedia">
-        <h1>Sonho Vinho</h1>
-        <p class="project-tags">Graphic Design, Visual Media</p>
-      </a>
-    </span>
-
-    <span>
-      <a href="work/uniproj.html" data-tags="Tech&Automation">
-        <h1>University Projects</h1>
-        <p class="project-tags">Tech & Automation</p>
-      </a>
-    </span>
-
-    <span>
-      <a href="work/photography.html" data-tags="VisualMedia">
-        <h1>Photography</h1>
-        <p class="project-tags">Visual Media</p>
-      </a>
-    </span>
-
-    <span>
-      <a href="work/videoedit.html" data-tags="VisualMedia">
-        <h1>Video Editing</h1>
-        <p class="project-tags">Visual Media</p>
-      </a>
-    </span>
-
+    <section class="work-section" id="other-work">
+      <p class="work-section-label">Other Work</p>
+      <div class="work-columns">
+        <div>
+          <p class="work-group-label">Brands & Ventures</p>
+          <span class="work-other"><a href="work/nusurf.html"><h1>NuSurf</h1>
+            <div class="proj-more"><div>
+              <p class="proj-summary">University surf club brand</p>
+            </div></div>
+          </a></span>
+          <span class="work-other"><a href="work/batotadoce.html"><h1>BatotaDoce</h1>
+            <div class="proj-more"><div>
+              <p class="proj-summary">My clothing brand, started at 16</p>
+            </div></div>
+          </a></span>
+          <span class="work-other"><a href="work/sonhovinho.html"><h1>Sonho Vinho</h1>
+            <div class="proj-more"><div>
+              <p class="proj-summary">Wine tour social media</p>
+            </div></div>
+          </a></span>
+        </div>
+        <div>
+          <p class="work-group-label">Web & Tech</p>
+          <span class="work-other"><a href="work/conswebsite.html"><h1>Consulting Website</h1>
+            <div class="proj-more"><div>
+              <p class="proj-summary">Website for a consultancy</p>
+            </div></div>
+          </a></span>
+          <span class="work-other"><a href="work/industapplication.html"><h1>Industrial Application</h1>
+            <div class="proj-more"><div>
+              <p class="proj-summary">Excel-to-PDF invoice tool</p>
+            </div></div>
+          </a></span>
+          <span class="work-other"><a href="work/uniproj.html"><h1>University Projects</h1>
+            <div class="proj-more"><div>
+              <p class="proj-summary">Computer science projects</p>
+            </div></div>
+          </a></span>
+        </div>
+        <div>
+          <p class="work-group-label">Visual Media</p>
+          <span class="work-other"><a href="work/photography.html"><h1>Photography</h1>
+            <div class="proj-more"><div>
+              <p class="proj-summary">Film photos: NY, London, Lisbon</p>
+            </div></div>
+          </a></span>
+          <span class="work-other"><a href="work/videoedit.html"><h1>Video Editing</h1>
+            <div class="proj-more"><div>
+              <p class="proj-summary">Filmed and edited videos</p>
+            </div></div>
+          </a></span>
+          <span class="work-other"><a href="work/shell.html"><h1>The Shell</h1>
+            <div class="proj-more"><div>
+              <p class="proj-summary">Photogrammetry to 3D model</p>
+            </div></div>
+          </a></span>
+        </div>
+      </div>
+    </section>
   </div>
 
-  </div>
+  <script>
+    // Hovering a project shows that project's page colours [text, background]
+    // (projects with dark page backgrounds use a light version here so the switch isn't harsh)
+    const projectColours = {
+      "work/drivefair.html": ["#003B65", "#EDF2F7"],
+      "work/neugenpower.html": ["#2E5233", "#E0EDDA"],
+      "work/lefta.html": ["#2B6A80", "#DDDDD0"],
+      "work/reportingsystem.html": ["#34405A", "#E3E4E8"],
+      "work/peacekeeper.html": ["#2F3A2A", "#CFDABD"],
+      "work/pandagas.html": ["#235789", "#BDD2D5"],
+      "work/breakingthestigma.html": ["#1F3328", "#E4EBD3"],
+      "work/userpsychology.html": ["#3F4F2F", "#E3B65A"],
+      "work/nusurf.html": ["#518E95", "#BDD2D5"],
+      "work/batotadoce.html": ["#AF46AF", "#E5B097"],
+      "work/sonhovinho.html": ["#820001", "#EAECE4"],
+      "work/conswebsite.html": ["#575B5F", "#EDE3E4"],
+      "work/industapplication.html": ["#6C6C6C", "#E6E6E6"],
+      "work/uniproj.html": ["#2F6380", "#E3EBF0"],
+      "work/photography.html": ["#01111a", "#E3EBF0"],
+      "work/videoedit.html": ["#824C71", "#ECE4EA"],
+      "work/shell.html": ["#3E7478", "#F3E9DA"],
+    };
 
+    const body = document.body;
+
+    document.querySelectorAll("#workContainer a").forEach((link) => {
+      const colours = projectColours[link.getAttribute("href")];
+      if (!colours) return;
+      const [text, background] = colours;
+
+      link.addEventListener("mouseenter", () => {
+        body.style.setProperty("--text", text);
+        body.style.setProperty("--background", background);
+        body.style.setProperty("--accent", text);
+        body.style.backgroundColor = background;
+        body.classList.add("project-hover");
+      });
+
+      link.addEventListener("mouseleave", () => {
+        ["--text", "--background", "--accent"].forEach((name) => body.style.removeProperty(name));
+        body.style.backgroundColor = "";
+        body.classList.remove("project-hover");
+      });
+    });
+  </script>
+  <script>
+    // On touch screens, the first tap opens a project's description, the second opens the project
+    if (window.matchMedia("(hover: none)").matches) {
+      const rows = document.querySelectorAll("#workContainer a");
+      rows.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          if (link.classList.contains("open")) return;
+          event.preventDefault();
+          rows.forEach((other) => other.classList.remove("open"));
+          link.classList.add("open");
+        });
+      });
+    }
+  </script>
   <script src="script.js"></script>
-  <script src="js/p5.min.js"></script>
-  <script src="js/vanta.topology.min.js"></script>
 
 
 </body>

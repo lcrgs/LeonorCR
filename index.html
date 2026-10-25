@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leonor CR</title>
+  <meta name="description" content="Leonor Gaspar da Silva, UX and interaction designer based in Lisbon. Case studies in UX research, app design and usability.">
+  <title>Leonor Gaspar da Silva</title>
+  <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -12,7 +14,7 @@
   <div id="intro-message">
     <p id="typing-text"></p>
   </div>
-  <div id="info-button" title="See message again">ⓘ</div>
+  <div id="info-button" title="See message again">i</div>
 
 
   <header class="top-menu">
@@ -23,7 +25,7 @@
 
   <div class="name-container">
     <a href="about.html" class="about-link">
-      <h2>Leonor CR</h2>
+      <h2>Leonor</h2>
     </a>
   </div>
 
@@ -42,7 +44,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const message =
-        "This website was handcrafted by me with many late nights, countless lines of code, and lots of love.";
+        "This website was handcrafted by me :)";
       const textElement = document.getElementById("typing-text");
       const introBox = document.getElementById("intro-message");
       const infoBtn = document.getElementById("info-button");
@@ -103,9 +105,8 @@
 
       startTypingAnimation();
 
-      infoBtn.addEventListener("mouseenter", () => {
-        startTypingAnimation();
-      });
+      infoBtn.addEventListener("mouseenter", startTypingAnimation);
+      infoBtn.addEventListener("click", startTypingAnimation);
     });
   </script>
 
@@ -122,10 +123,7 @@
 
 
 
-  <audio id="hover-sound" src="hover-sound.mp3" preload="auto"></audio>
-
-  <script src="script.js"></script>
-
+  <audio id="hover-sound" src="hover-sound.wav" preload="auto"></audio>
 
 </body>
 

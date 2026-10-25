@@ -65,6 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Only play sound if the hovered element is an <a> tag
         if (event.target.tagName === "A") {
           hoverSound.currentTime = 0;
+          // Slight random pitch/speed variation so it doesn't sound identical every time
+          hoverSound.playbackRate = 0.92 + Math.random() * 0.16;
           hoverSound
             .play()
             .catch((e) => console.warn("Hover sound blocked:", e));
@@ -79,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------
   const initVantaEffect = (type, selector, options) => {
     const el = document.querySelector(selector);
-    if (el && VANTA[type]) return VANTA[type]({ el, ...options });
+    if (el && window.VANTA && VANTA[type]) return VANTA[type]({ el, ...options });
   };
 
   const vantaOptions = {
@@ -120,56 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ------------------------------
-  // 4. Project Filter Buttons
-  // ------------------------------
-  const buttons = document.querySelectorAll(".filter-btn");
-  const allButton = document.querySelector('[data-tag="All"]');
-  const selectedTags = new Set();
-
-  allButton?.classList.add("active");
-
-  const filterProjects = () => {
-    document.querySelectorAll(".menu-container a").forEach((project) => {
-      const tags = project.dataset.tags.split(" ");
-      const show =
-        selectedTags.size === 0 || tags.some((tag) => selectedTags.has(tag));
-      project.style.display = show ? "block" : "none";
-    });
-  };
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const tag = button.dataset.tag;
-
-      if (tag === "All") {
-        selectedTags.clear();
-        buttons.forEach((btn) => btn.classList.remove("active"));
-        allButton.classList.add("active");
-      } else {
-        selectedTags.has(tag)
-          ? selectedTags.delete(tag)
-          : selectedTags.add(tag);
-        button.classList.toggle("active");
-
-        if (selectedTags.size === 0 || selectedTags.size === 5) {
-          selectedTags.clear();
-          buttons.forEach((btn) => btn.classList.remove("active"));
-          allButton.classList.add("active");
-        } else {
-          allButton.classList.remove("active");
-        }
-      }
-
-      filterProjects();
-    });
-  });
-
-  filterProjects();
-
-  // ------------------------------
   // 5. Highlight Link on Scroll
   // ------------------------------
-  const workLinks = document.querySelectorAll("#workContainer h1");
+  const workLinks = document.querySelectorAll("#workContainer .work-featured h1");
 
   const checkMiddleOfScreen = () => {
     const middle = window.innerHeight / 2;
@@ -184,6 +139,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", checkMiddleOfScreen);
   checkMiddleOfScreen();
+
+  // Reveal work sections and highlight the matching section link
+  const workSections = document.querySelectorAll(".work-section");
+
+  if (workSections.length) {
+    document.documentElement.classList.add("js-reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    const sectionLinks = document.querySelectorAll('.tag-filter-container a[href^="#"]');
+    const spyObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          document.body.dataset.section = entry.target.id;
+          sectionLinks.forEach((link) =>
+            link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`)
+          );
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px" }
+    );
+
+    workSections.forEach((section) => {
+      revealObserver.observe(section);
+      spyObserver.observe(section);
+    });
+  }
 
   // ------------------------------
   // 6. Carousel Functionality
@@ -281,47 +271,84 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ------------------------------
-// 10. Map Initialization (Leaflet)
+// 10. Travel Map (Leaflet, About page only)
 // ------------------------------
-const map = L.map("map").setView([51.505, -0.09], 2);
+const mapElement = document.getElementById("map");
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: "&copy; OpenStreetMap contributors",
-}).addTo(map);
+if (mapElement && window.L) {
+  const markerColor =
+    getComputedStyle(document.body).getPropertyValue("--text").trim() || "#8d4747";
 
-const customIcon = L.icon({
-  iconUrl: "icon.png",
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-  popupAnchor: [0, -32],
-});
-
-function addCountryMarker(lat, lon, name) {
-  L.marker([lat, lon], { icon: customIcon })
-    .addTo(map)
-    .bindPopup(`<b>${name}</b>`);
-}
-
-[
-  [42.5078, 1.5211, "Andorra"],
-  [50.8503, 4.3517, "Belgium"],
-  [15.12, -23.605, "Cape Verde"],
-  [51.5074, -0.1278, "England"],
-  [48.8566, 2.3522, "France"],
-  [51.1657, 10.4515, "Germany"],
-  [41.9028, 12.4964, "Italy"],
-  [31.9466, -7.5095, "Morocco"],
-  [38.7169, -9.1395, "Portugal"],
-  [56.4907, -4.2026, "Scotland"],
-  [-33.9249, 18.4241, "South Africa"],
-  [40.4637, -3.7492, "Spain"],
-  [40.7128, -74.006, "United States"],
-].forEach(([lat, lon, name]) => addCountryMarker(lat, lon, name));
-
-document.querySelectorAll(".dropdown-question").forEach((button) => {
-  button.addEventListener("click", () => {
-    const answer = button.nextElementSibling;
-    answer.classList.toggle("open");
-    button.classList.toggle("open"); // this is needed for the arrow to rotate
+  const map = L.map(mapElement, {
+    scrollWheelZoom: false,
+    dragging: !L.Browser.mobile,
+    minZoom: 1,
+    maxZoom: 6,
+    worldCopyJump: true,
   });
-});
+
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+
+  const places = [
+    [42.5078, 1.5211, "Andorra"],
+    [50.8503, 4.3517, "Belgium"],
+    [15.12, -23.605, "Cape Verde"],
+    [39.9042, 116.4074, "China"],
+    [51.5074, -0.1278, "England"],
+    [48.8566, 2.3522, "France"],
+    [51.1657, 10.4515, "Germany"],
+    [53.3498, -6.2603, "Ireland"],
+    [41.9028, 12.4964, "Italy"],
+    [31.9466, -7.5095, "Morocco"],
+    [38.7169, -9.1395, "Portugal"],
+    [56.4907, -4.2026, "Scotland"],
+    [-33.9249, 18.4241, "South Africa"],
+    [40.4637, -3.7492, "Spain"],
+    [40.7128, -74.006, "United States"],
+  ];
+
+  const allBounds = L.latLngBounds(places.map(([lat, lon]) => [lat, lon]));
+  const showAll = () => map.fitBounds(allBounds, { padding: [30, 30] });
+  showAll();
+
+  const highlight = (marker, on) => {
+    marker.setStyle({ radius: on ? 10 : 7, fillOpacity: on ? 1 : 0.85 });
+    on ? marker.openTooltip() : marker.closeTooltip();
+  };
+
+  const list = document.getElementById("places-list");
+
+  places.forEach(([lat, lon, name]) => {
+    const marker = L.circleMarker([lat, lon], {
+      radius: 7,
+      color: "#fff",
+      weight: 2,
+      fillColor: markerColor,
+      fillOpacity: 0.85,
+    })
+      .addTo(map)
+      .bindTooltip(name, { direction: "top", offset: [0, -8] });
+
+    marker.on("mouseover", () => highlight(marker, true));
+    marker.on("mouseout", () => highlight(marker, false));
+
+    if (list) {
+      const item = document.createElement("li");
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = name;
+      button.addEventListener("mouseenter", () => highlight(marker, true));
+      button.addEventListener("mouseleave", () => highlight(marker, false));
+      button.addEventListener("click", () => {
+        map.flyTo([lat, lon], 5, { duration: 1 });
+        map.once("moveend", () => highlight(marker, true));
+      });
+      item.appendChild(button);
+      list.appendChild(item);
+    }
+  });
+
+  document.getElementById("map-reset")?.addEventListener("click", showAll);
+}
